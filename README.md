@@ -99,6 +99,7 @@ add introducing text to every company
 - Weddings
 - Student parties
 - Birthdays
+- 5te element
 
 #### Hornung Webdesign
 - Hotel Management
@@ -107,6 +108,7 @@ add introducing text to every company
 - djabdul
 - rhoen english camps
 - naehwebsite
+- Neidclub
 
 #### Premiums
 - Winner Adidas Hackathon Barcelona
