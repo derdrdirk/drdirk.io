@@ -1251,7 +1251,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/knowledge/Developer/drdirk/pages/_app.js";
+var _jsxFileName = "/Users/beatabozso/Developer/drdirk.io/pages/_app.js";
 
 function _templateObject() {
   var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_8__["default"])(["\n  @font-face {\n    font-family: 'FontLight';\n    src: url('./static/fonts/HKGrotesk-Light.ttf') format('opentype');\n  }\n  @font-face {\n    font-family: 'FontRegular';\n    src: url('./static/fonts/HKGrotesk-Regular.ttf') format('opentype');\n  }\n  body {\n    font-family: FontRegular;\n    margin: 0;\n  }\n"]);

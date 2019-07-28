@@ -20,6 +20,7 @@ const Content = styled.section`
   grid-template-rows: 500px 500px;
   justify-content: center;
   grid-column-gap: 30px;
+  grid-row-gap: 30px;
 `
 
 const Description = styled.div`
@@ -65,9 +66,9 @@ function Home() {
         </ProfilePic>
       </Header>
       <Content>
-        <Card title="hola 1"/>
-        <Card title="hola 2"/>
-        <Card title="hola 3" fulli="j"/>
+        <Card title="hola 1" />
+        <Card title="hola 2" />
+        <Card title="hola 3" full/>
       </Content>
     </Fragment>
   )

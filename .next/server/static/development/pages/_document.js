@@ -1494,7 +1494,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/knowledge/Developer/drdirk/pages/_document.js";
+var _jsxFileName = "/Users/beatabozso/Developer/drdirk.io/pages/_document.js";
 
 
 

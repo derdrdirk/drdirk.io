@@ -9430,7 +9430,7 @@ function isStyledComponent(target) {
 var SC_ATTR = typeof process !== 'undefined' && (process.env.REACT_APP_SC_ATTR || process.env.SC_ATTR) || 'data-styled';
 var SC_ATTR_ACTIVE = 'active';
 var SC_ATTR_VERSION = 'data-styled-version';
-var SC_VERSION = "5.0.0-beta.8";
+var SC_VERSION = "5.0.0-beta.6-ej4";
 var IS_BROWSER =  true && 'HTMLElement' in window;
 var DISABLE_SPEEDY = typeof SC_DISABLE_SPEEDY === 'boolean' && SC_DISABLE_SPEEDY || typeof process !== 'undefined' && (process.env.REACT_APP_SC_DISABLE_SPEEDY || process.env.SC_DISABLE_SPEEDY) || "development" !== 'production'; // Shared empty execution context when generating static styles
 
@@ -10391,7 +10391,7 @@ function () {
       }
 
       var cssStatic = flatten(this.rules, executionContext, styleSheet).join('');
-      var name = generateAlphabeticName(phash(this.baseHash, cssStatic.length) >>> 0);
+      var name = generateAlphabeticName(this.baseHash >>> 0);
 
       if (!styleSheet.hasNameForId(componentId, name)) {
         var cssStaticFormatted = styleSheet.options.stringifier(cssStatic, "." + name, undefined, componentId);
@@ -10674,7 +10674,6 @@ function StyleSheetManager(props) {
 
 /* global $Call */
 
-var THEME_PROP_R = /\.theme[.[]/;
 var identifiers = {};
 /* We depend on components having unique IDs */
 
@@ -10744,22 +10743,13 @@ function useStyledComponentImpl(forwardedComponent, props, forwardedRef) {
   // but that'd be against the rules-of-hooks. We could be naughty and do it anyway as it
   // should be an immutable value, but behave for now.
 
-  var theme = determineTheme(props, Object(react__WEBPACK_IMPORTED_MODULE_6__["useContext"])(ThemeContext), defaultProps);
+  var theme = determineTheme(props, Object(react__WEBPACK_IMPORTED_MODULE_6__["useContext"])(ThemeContext), defaultProps) || EMPTY_OBJECT;
 
-  var _useResolvedAttrs = useResolvedAttrs(theme || EMPTY_OBJECT, props, componentAttrs),
+  var _useResolvedAttrs = useResolvedAttrs(theme, props, componentAttrs),
       context = _useResolvedAttrs[0],
       attrs = _useResolvedAttrs[1];
 
   var generatedClassName = useInjectedStyle(componentStyle, componentAttrs.length > 0, context,  true ? forwardedComponent.warnTooManyClasses : undefined);
-
-  if ( true && forwardedComponent.usesTheme && !theme) {
-    console.error("Component " + // $FlowFixMe
-    forwardedComponent.displayName + " (." + styledComponentId + ") uses \"props.theme\" in its styles but no theme was provided via prop or ThemeProvider."); // cheap way to do "once" ;)
-    // eslint-disable-next-line no-param-reassign
-
-    forwardedComponent.usesTheme = false;
-  }
-
   var refToForward = forwardedRef;
   var elementToBeCreated = props.as || attrs.as || target;
   var isTargetTag = isTag(elementToBeCreated);
@@ -10856,9 +10846,6 @@ function createStyledComponent(target, options, rules) {
   });
 
   if (true) {
-    WrappedStyledComponent.usesTheme = componentStyle.rules.some(function (x) {
-      return isFunction(x) && THEME_PROP_R.test(x.toString());
-    });
     WrappedStyledComponent.warnTooManyClasses = createWarnTooManyClasses(displayName);
   } // $FlowFixMe
 
@@ -12043,7 +12030,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/knowledge/Developer/drdirk/pages/_app.js";
+var _jsxFileName = "/Users/beatabozso/Developer/drdirk.io/pages/_app.js";
 
 function _templateObject() {
   var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_8__["default"])(["\n  @font-face {\n    font-family: 'FontLight';\n    src: url('./static/fonts/HKGrotesk-Light.ttf') format('opentype');\n  }\n  @font-face {\n    font-family: 'FontRegular';\n    src: url('./static/fonts/HKGrotesk-Regular.ttf') format('opentype');\n  }\n  body {\n    font-family: FontRegular;\n    margin: 0;\n  }\n"]);

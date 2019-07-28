@@ -8,18 +8,17 @@ const StyledCard = styled.div`
   border-radius: 12px;
   background-color: #f9fafc;
   box-sizing: border-box;
-  ${function (props) {
-console.log(props)
- return(`
+  ${(props) => props.full && `
     grid-column-start: 1;
     grid-column-end: 3;
-  `)}}
+  `}
 `
 
 const Card = (props) => (
-  <StyledCard>
+  <StyledCard full={props.full}>
     {props.title}
   </StyledCard>
 )
+
 
 export default Card
