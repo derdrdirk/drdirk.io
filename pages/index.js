@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
 
@@ -66,9 +66,12 @@ function Home() {
         </ProfilePic>
       </Header>
       <Content>
-        <Card title="hola 1" />
-        <Card title="hola 2" />
-        <Card title="hola 3" full/>
+        <Card title="Entrepreneur" subtitle="test 1" full gradient={3} />
+        <Card title="Full-Stack Developer" subtitle="test 1" />
+        <Card title="Blockchain Developer" subtitle="test 1" />
+        <Card title="PhD in Theoretical Physics" subtitle="test 1" full gradient={2} />
+        <Card title="Prototyping" subtitle="test 1" />
+        <Card title="Artificial Intelligence" subtitle="test 1" />
       </Content>
     </Fragment>
   )
