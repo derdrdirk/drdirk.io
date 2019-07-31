@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
+import { faRocket, faLayerGroup, faAtom, faScrewdriver, faRobot} from '@fortawesome/free-solid-svg-icons'
+import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
 const Header = styled.section`
   height: 100vh;
@@ -17,7 +19,6 @@ const Content = styled.section`
   margin: 50px auto 50px auto;
   display: grid;
   grid-template-columns: calc(50% - 15px) calc(50% - 15px);
-  grid-template-rows: 500px 500px;
   justify-content: center;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
@@ -66,12 +67,13 @@ function Home() {
         </ProfilePic>
       </Header>
       <Content>
-        <Card title="Entrepreneur" subtitle="test 1" full gradient={3} />
-        <Card title="Full-Stack Developer" subtitle="test 1" />
-        <Card title="Blockchain Developer" subtitle="test 1" />
-        <Card title="PhD in Theoretical Physics" subtitle="test 1" full gradient={2} />
-        <Card title="Prototyping" subtitle="test 1" />
-        <Card title="Artificial Intelligence" subtitle="test 1" />
+        <Card title="Entrepreneur" subtitle="test 1" icon={faRocket} full gradient={3}  />
+        <Card title="Full-Stack Developer" subtitle="test 1" icon={faLayerGroup} />
+        <Card title="Blockchain Developer" subtitle="test 1" icon={faEthereum} />
+        <Card title="PhD in Theoretical Physics" subtitle="test 1" icon={faAtom}
+          full gradient={2} />
+        <Card title="Prototyping" subtitle="test 1" icon={faScrewdriver} />
+        <Card title="Artificial Intelligence" subtitle="test 1" icon={faRobot} />
       </Content>
     </Fragment>
   )

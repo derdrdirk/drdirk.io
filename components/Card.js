@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import makeCarousel from 'react-reveal/makeCarousel';
 import withReveal from '../components/withReveal'
 import Fade from 'react-reveal/Fade'
@@ -24,6 +23,7 @@ const StyledCard = withReveal(styled.div`
   color: ${(props) => props.dark ? 'white' : 'black'};
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px 0px;
+  background-color: rgb(249, 250, 252);
   ${function(props) {
     switch(props.gradient) {
         case 1:
@@ -54,7 +54,7 @@ const Card = (props) => (
 		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
 	      </linearGradient>
       </svg>
-      <StyledIcon icon={faRocket} />
+      <StyledIcon icon={props.icon} />
       <h1>{props.title}</h1>
       <h2>{props.subtitle}</h2>
     </StyledCard>
