@@ -15,6 +15,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: FontRegular;
     margin: 0;
   }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-family: fontRegular;
+    font-weight: 400;
+    transition: 0.3s;
+
+    &:hover {
+      color: #65d2e9;
+    }
+  }
 `
 
 const theme = {

@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
+import Navigation from '../components/Navigation'
 import Card from '../components/Card'
 import { faRocket, faLayerGroup, faAtom, faScrewdriver, faRobot} from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
@@ -40,7 +42,7 @@ const ProfilePic = styled.div`
   }
 `
 
-const LinkButton = styled.a`
+const LinkButton = styled(Link)`
   display: inline-block;
   font-family: FontRegular;
   font-weight: 600;
@@ -56,11 +58,12 @@ const LinkButton = styled.a`
 function Home() {
   return (
     <Fragment>
+      <Navigation />
       <Header>
         <Description>
           <h1>I am Dirk Hornung,</h1>
           <p>a recently graduated theoretical physics PhD.</p>
-          <LinkButton>Discover me</LinkButton>
+          <LinkButton href="/timeline">Discover me</LinkButton>
         </Description>
         <ProfilePic>
           <img src="./static/images/dirk.jpg"/>
