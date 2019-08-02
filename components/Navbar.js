@@ -26,7 +26,7 @@ const StyledUl = styled.ul`
     font-size: 17px;
   }
 `
-class Navigation extends React.Component {
+class Navbar extends React.Component {
   state = { height: 64 }
 
   componentDidMount() {
@@ -70,4 +70,4 @@ class Navigation extends React.Component {
   )
 }
 
-export default Navigation
+export default Navbar

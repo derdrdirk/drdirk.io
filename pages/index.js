@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Navigation from '../components/Navigation'
+import Layout from '../components/Layout'
 import Card from '../components/Card'
 import { faRocket, faLayerGroup, faAtom, faScrewdriver, faRobot} from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
@@ -57,8 +57,7 @@ const LinkButton = styled(Link)`
 
 function Home() {
   return (
-    <Fragment>
-      <Navigation />
+    <Layout>
       <Header>
         <Description>
           <h1>I am Dirk Hornung,</h1>
@@ -78,7 +77,7 @@ function Home() {
         <Card title="Prototyping" subtitle="test 1" icon={faScrewdriver} />
         <Card title="Artificial Intelligence" subtitle="test 1" icon={faRobot} />
       </Content>
-    </Fragment>
+    </Layout>
   )
 }
 
