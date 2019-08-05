@@ -1,18 +1,18 @@
-import React from 'react'
-import {Spring, animation} from 'react-spring'
+import React, {useState, useCallback} from 'react'
+import {useSpring, animated} from 'react-spring'
 import styled from 'styled-components'
 import Link from 'next/link'
+import useEventListener from './useEventListener'
 
-const NavigationContainer = styled.div`
+const NavigationContainer = styled(animated.div)`
   width: 100vw;
   position: fixed;
-  background-color: rgba(28, 29, 35, 0.8);
   display: flex;
   justify-content: center;
   z-index: 1;
 `
 
-const StyledUl = styled.ul`
+const StyledUl = styled(animated.div)`
   list-style: none;
   display: flex;
   margin: 0;
@@ -26,48 +26,72 @@ const StyledUl = styled.ul`
     font-size: 17px;
   }
 `
-class Navbar extends React.Component {
-  state = { height: 64 }
+/* class Navbar extends React.Component {
+ *   state = { height: 64, opacity: 1 }
+ * 
+ *   componentDidMount() {
+ *     window.addEventListener('scroll', this.onScroll);
+ *   }
+ * 
+ *   componentWillUnmount() {
+ *     window.removeEventListener('scroll', this.onScroll);
+ *   }
+ * 
+ *   onScroll = event => {
+ *     let height = 1 - (document.scrollingElement.scrollTop * 2) / 1000;
+ *     if (height < 0.68) {
+ *       height = 0.68;
+ *     }
+ * 
+ *     let opacity = 1 - (document.scrollingElement.scrollTop * 2) / 1000;
+ *     if (opacity < 0.8) {
+ *       opacity = 0.8;
+ *     }
+ * 
+ *     this.setState({ height: height * 64, opacity })
+ *   } */
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScroll);
-  }
+  const Navbar = () => {
+    const [scrollPos, setScrollPos] = useState({y: 0})
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-  }
+    const handler = useCallback(
+      () => {
+        const scrollY = window.scrollY
+        setScrollPos({y: scrollY})
+      }, [setScrollPos]
+    )
 
-  onScroll = event => {
-    let height = 1 - (document.scrollingElement.scrollTop * 2) / 1000;
-
-    if (height < 0.68) {
-      height = 0.68;
+    // SSR window is only defined on the client
+    if(typeof window === 'object') {
+      useEventListener('scroll', handler, window)
     }
 
-    this.setState({ height: height * 64})
-  }
+    const isScrolled = (scrollPos.y > 10) ? true : false
+    const props = useSpring({
+      height: (isScrolled) ? '40px' : '64px',
+      lineHeight: (isScrolled) ? '40px' : '64px',
+      backgroundColor: (isScrolled) ? 'rgba(28, 29, 35, 0.8)' : 'rgba(28, 29, 35, 1)'
+    })
 
-  renderIn = ({h}) => (
-    <NavigationContainer style={{height: h.value}}>
+    return (
+      <NavigationContainer style={props}>
         <StyledUl>
-          <li style={{lineHeight: `${h.value}px`}}>
+          <li>
             <Link href="/">Home</Link>
           </li>
-          <li style={{lineHeight: `${h.value}px`}}>
+          <li>
             <Link href="/timeline">Timeline</Link>
           </li>
-          <li style={{lineHeight: `${h.value}px`}}>
+          <li>
             <Link href="/portfolio">Portfolio</Link>
           </li>
         </StyledUl>
-    </NavigationContainer>
-  )
-
-  render = () => (
-    <Spring from={{h: 64}} to={{h: this.state.height}}>
-      {this.renderIn}
-    </Spring>
-  )
-}
+      </NavigationContainer>
+    )
+  }
 
 export default Navbar
+
+/* <animated.div style={{...props, backgroundColor: 'black', position: 'fixed', width: '100vw', zIndex: 1}}>
+ * </animated.div> */
+
