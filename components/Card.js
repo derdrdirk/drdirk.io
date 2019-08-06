@@ -4,6 +4,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import makeCarousel from 'react-reveal/makeCarousel';
 import withReveal from '../components/withReveal'
 import Fade from 'react-reveal/Fade'
+import PropTypes from 'prop-types'
+
+const Card = (props) => (
+  <StyledGrid {...props}>
+    <StyledCard {...props}>
+      <svg width="0" height="0">
+	      <linearGradient id="lgrad" x1="100%" y1="100%" x2="0%" y2="0%" >
+		      <stop offset="0%" style={{stopColor: '#bae7f1', stopOpacity: 1}} />
+		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
+	      </linearGradient>
+      </svg>
+      <StyledIcon icon={props.icon} />
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+    </StyledCard>
+  </StyledGrid>
+)
+
+Card.propTypes = {
+  backgroundColor: PropTypes.string,
+  dark: PropTypes.bool,
+  full: PropTypes.bool,
+  gradient: PropTypes.number,
+  textAlign: PropTypes.string
+}
+
+
 
 const StyledGrid = styled.div`
   ${(props) => props.full && `
@@ -18,12 +45,12 @@ const StyledCard = withReveal(styled.div`
   flex-direction: column;
   width: 100%;
   padding: 60px;
-  text-align: center;
+  text-align: ${(props) => props.textAlign ? props.textAlign : 'center'};
   border-radius: 12px;
   color: ${(props) => props.dark ? 'white' : 'black'};
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px 0px;
-  background-color: rgb(249, 250, 252);
+  background-color: ${(props) => props.backgroundColor ? props.backgroundColor : 'rgb(249, 250, 252)'};
   ${function(props) {
     switch(props.gradient) {
         case 1:
@@ -44,22 +71,5 @@ const StyledIcon = styled(FontAwesomeIcon)`
     fill: url(#lgrad);
   }
 `
-
-const Card = (props) => (
-  <StyledGrid {...props}>
-    <StyledCard {...props}>
-      <svg width="0" height="0">
-	      <linearGradient id="lgrad" x1="100%" y1="100%" x2="0%" y2="0%" >
-		      <stop offset="0%" style={{stopColor: '#bae7f1', stopOpacity: 1}} />
-		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
-	      </linearGradient>
-      </svg>
-      <StyledIcon icon={props.icon} />
-      <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
-    </StyledCard>
-  </StyledGrid>
-)
-
 
 export default Card
