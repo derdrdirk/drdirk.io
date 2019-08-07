@@ -8,6 +8,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-flip-toolkit": "^6.6.9",
     "react-reveal": "^1.2.2",
     "react-spring": "^9.0.0-beta.31",
     "styled-components": "^5.0.0-beta.8"
