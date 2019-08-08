@@ -8,11 +8,9 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 
 const portfolio = [{
   title: 'PhD Thesis',
-  description: `
-# test
-- 1
-- 2
-- 3
+  description:
+`## test
+ - test
 `,
   images: ['dirk.jpg', 'road.png'],
   tags: ['Physics', 'Quantum Chromodynamics', 'Quantum Field Theory', 'C++', 'Numerics', 'Fits'],
@@ -173,13 +171,13 @@ export default () => {
       </Controls>
       <Flipper flipKey={JSON.stringify(filteredData)}>
         <List>
-          {filteredData.map(({ title, fullscreen, images }) => {
+          {filteredData.map(({ title, fullscreen, ...rest }) => {
             if(fullscreen) {
               return (
                 <Flipped key={title} flipId={title}>
                   <FullScreenModal
                     title={title}
-                    images={images}
+                    {...rest}
                     onClick={() => toggleFullScreen(title)}
                   />
                 </Flipped>

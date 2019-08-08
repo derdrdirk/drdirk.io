@@ -16,7 +16,7 @@ export default ({title, description, images}) => (
         slidesToShow={1}
         slidesToScroll={1}
       >
-        {images.map((src) => <StyledImg src={`/static/images/${src}`} /> )}
+        {images.map((src) => <StyledImg key={src} src={`/static/images/${src}`} /> )}
       </Slider>
     </Left>
     <Right>
