@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
+import FullScreenModal from '../components/FullScreenModal'
 import styled from 'styled-components'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
 
 const portfolio = [{
   title: 'PhD Thesis',
+  description: `
+# test
+- 1
+- 2
+- 3
+`,
+  images: ['dirk.jpg', 'road.png'],
   tags: ['Physics', 'Quantum Chromodynamics', 'Quantum Field Theory', 'C++', 'Numerics', 'Fits'],
 }, {
   title: 'Master Thesis',
@@ -90,7 +98,7 @@ const portfolio = [{
   company: 'Hornung Webdesign',
   tags: ['HTML', 'CSS', 'JavaScript']
 }, {
-  title: 'Architektur International: BranchenIndex'
+  title: 'Architektur International: BranchenIndex',
   company: 'Hornung Webdesign',
   tags: ['HTML', 'CSS', 'PHP', 'JavaScript', 'MySQL'],
 }, {
@@ -111,6 +119,10 @@ const portfolio = [{
   tags: ['Flash', 'ActionScript']
 }]
 
+for(const item of portfolio) {
+  item.fullscreen = false
+}
+
 
 const tags = new Set()
 portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
@@ -120,6 +132,12 @@ portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
 export default () => {
   const [filter, setFilter] = useState({})
   const [data, setData] = useState(portfolio)
+  const toggleFullScreen = (title) => {
+    setData(data.map(item => {
+      if(item.title !== title) return {...item, fullscreen: false}
+      return {...item, fullscreen: true}
+    }))
+  }
 
   const filteredData = data.filter(
     ( data ) => {
@@ -151,15 +169,29 @@ export default () => {
       <Controls>
         {/* <Filter filterProp="onlyProfessional" title="Professional"/> */}
         {/* <Filter filterProp="onlyAcademic" title="Academic"/> */}
-        {[...tags].map(tag => <Filter filterProp={tag} title={tag} />)}
+        {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)}
       </Controls>
       <Flipper flipKey={JSON.stringify(filteredData)}>
         <List>
-          {filteredData.map(({ title }) => (
-            <Flipped key={title} flipId={title}>
-              <ListElement><Card title={title}/></ListElement>
-            </Flipped>
-          ))}
+          {filteredData.map(({ title, fullscreen, images }) => {
+            if(fullscreen) {
+              return (
+                <Flipped key={title} flipId={title}>
+                  <FullScreenModal
+                    title={title}
+                    images={images}
+                    onClick={() => toggleFullScreen(title)}
+                  />
+                </Flipped>
+              )
+            } else {
+              return (
+                <Flipped key={title} flipId={title}>
+                  <ListElement onClick={() => toggleFullScreen(title)}><Card title={title}/></ListElement>
+                </Flipped>
+              )
+            }
+          })}
         </List>
       </Flipper>
     </Layout>
@@ -184,7 +216,7 @@ const Button = styled.button`
   font-family: FontRegular;
   font-weight: 400;
   font-size: 16px;
-  background-color: ${props => props.active ? 'green' : 'white'};
+  background-col or: ${props => props.active ? 'green' : 'white'};
   margin: 7px;
   cursor: pointer;
   &:hover {
@@ -203,3 +235,4 @@ const ListElement = styled.li`
   display: block;
   margin: 0 0 16px 0;
 `
+

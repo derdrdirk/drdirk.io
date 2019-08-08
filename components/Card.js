@@ -15,7 +15,7 @@ const Card = (props) => (
 		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
 	      </linearGradient>
       </svg>
-      <StyledIcon icon={props.icon} />
+      {props.icon && <StyledIcon icon={props.icon} /> }
       <h1>{props.title}</h1>
       <h2>{props.subtitle}</h2>
     </StyledCard>

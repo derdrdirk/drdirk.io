@@ -27,6 +27,13 @@ const GlobalStyle = createGlobalStyle`
       color: #65d2e9;
     }
   }
+
+  // center slider images
+  .slick-initialized .slick-track {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
 `
 
 const theme = {

@@ -62,7 +62,7 @@ function Home() {
         <Description>
           <h1>I am Dirk Hornung,</h1>
           <p>a recently graduated theoretical physics PhD.</p>
-          <LinkButton href="/timeline">Discover me</LinkButton>
+          <LinkButton href="/timeline"><a>Discover me</a></LinkButton>
         </Description>
         <ProfilePic>
           <img src="./static/images/dirk.jpg"/>
