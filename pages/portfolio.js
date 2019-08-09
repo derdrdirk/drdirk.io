@@ -12,6 +12,7 @@ const portfolio = [{
 `## test
  - test
 `,
+  attachements: ['phdThesis.pdf'],
   images: ['dirk.jpg', 'road.png'],
   tags: ['Physics', 'Quantum Chromodynamics', 'Quantum Field Theory', 'C++', 'Numerics', 'Fits'],
 }, {
@@ -125,25 +126,24 @@ for(const item of portfolio) {
 const tags = new Set()
 portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
 
-
-
 export default () => {
   const [filter, setFilter] = useState({})
   const [data, setData] = useState(portfolio)
+
   const toggleFullScreen = (title) => {
     setData(data.map(item => {
       if(item.title !== title) return {...item, fullscreen: false}
-      return {...item, fullscreen: true}
+      return {...item, fullscreen: !item.fullscreen}
     }))
   }
 
   const filteredData = data.filter(
     ( data ) => {
-      // if(filter.onlyProfessional && !data.isProfessional)
-      //   return false
+      if(filter.onlyProfessional && !data.isProfessional)
+        return false
 
-      // if(filter.onlyAcademic && data.isProfessional)
-      //   return false
+      if(filter.onlyAcademic && data.isProfessional)
+        return false
 
       for(const tag of tags) {
         if(filter[tag] && !data.tags.includes(tag))
@@ -165,8 +165,8 @@ export default () => {
   return (
     <Layout>
       <Controls>
-        {/* <Filter filterProp="onlyProfessional" title="Professional"/> */}
-        {/* <Filter filterProp="onlyAcademic" title="Academic"/> */}
+        <Filter filterProp="onlyProfessional" title="Professional"/>
+        <Filter filterProp="onlyAcademic" title="Academic"/>
         {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)}
       </Controls>
       <Flipper flipKey={JSON.stringify(filteredData)}>
@@ -177,8 +177,8 @@ export default () => {
                 <Flipped key={title} flipId={title}>
                   <FullScreenModal
                     title={title}
+                    close={() => toggleFullScreen(title)}
                     {...rest}
-                    onClick={() => toggleFullScreen(title)}
                   />
                 </Flipped>
               )
@@ -194,7 +194,6 @@ export default () => {
       </Flipper>
     </Layout>
   )
-
 }
 
 const Controls = styled.div`
@@ -214,7 +213,7 @@ const Button = styled.button`
   font-family: FontRegular;
   font-weight: 400;
   font-size: 16px;
-  background-col or: ${props => props.active ? 'green' : 'white'};
+  background-color: ${props => props.active ? 'green' : 'white'};
   margin: 7px;
   cursor: pointer;
   &:hover {
@@ -233,4 +232,3 @@ const ListElement = styled.li`
   display: block;
   margin: 0 0 16px 0;
 `
-

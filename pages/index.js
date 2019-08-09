@@ -6,6 +6,36 @@ import Card from '../components/Card'
 import { faRocket, faLayerGroup, faAtom, faScrewdriver, faRobot} from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
+
+export default () => {
+  return (
+    <Layout>
+      <Header>
+        <Description>
+          <h1>I am Dr. Dirk Hornung,</h1>
+          <p>a recently graduated theoretical physics PhD. I am an entrepreneur, full stack developer, blockchain architect and prototyper. I have a passion for discovering new things. Lately I am studying Deep Learning and build IOT devices.</p>
+          <LinkButton href="/timeline"><a>Discover me</a></LinkButton>
+        </Description>
+        <Video
+          src="https://www.youtube.com/embed/Om1DGAa7Cgw"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></Video>
+      </Header>
+      <Content>
+        <Card title="Entrepreneur" subtitle="Founding companies since 14." icon={faRocket} full gradient={3}  />
+        <Card title="Full Stack Developer" subtitle="Need an App?" icon={faLayerGroup} />
+        <Card title="Blockchain Developer" subtitle="Ethereum and Smart Contracts!" icon={faEthereum} />
+        <Card title="PhD in Theoretical Physics" subtitle="Strong analytic thinking." icon={faAtom}
+          full gradient={2} />
+        <Card title="Prototyping" subtitle="I love building things!" icon={faScrewdriver} />
+        <Card title="Artificial Intelligence" subtitle="Machines > Humans." icon={faRobot} />
+      </Content>
+    </Layout>
+  )
+}
+
 const Header = styled.section`
   height: 100vh;
   background-color: #1c1d23;
@@ -13,8 +43,8 @@ const Header = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `
-
 const Content = styled.section`
   width: 95%;
   max-width: 1100px;
@@ -29,17 +59,17 @@ const Content = styled.section`
 const Description = styled.div`
   font-family: FontLight;
   margin: 50px;
-`
-const ProfilePic = styled.div`
-  background-color: white;
-  border-radius: 8px;
-  height: 80vh;
-  padding: 8px 8px 0 8px;
-  margin: 50px;
+  width: 25vw;
 
-  img {
-    height: 100%;
+  > p {
+    font-size: 1.2rem;
   }
+`
+const Video = styled.iframe`
+  width: 55vw;
+  height: calc(55vw/560 * 315);
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.18) 0px 4px 6px 0px;
 `
 
 const LinkButton = styled(Link)`
@@ -54,31 +84,3 @@ const LinkButton = styled(Link)`
   border-radius: 3px;
   background: linear-gradient(130deg, rgb(0, 180, 230), rgb(0, 240, 224)) transparent;
 `
-
-function Home() {
-  return (
-    <Layout>
-      <Header>
-        <Description>
-          <h1>I am Dirk Hornung,</h1>
-          <p>a recently graduated theoretical physics PhD.</p>
-          <LinkButton href="/timeline"><a>Discover me</a></LinkButton>
-        </Description>
-        <ProfilePic>
-          <img src="./static/images/dirk.jpg"/>
-        </ProfilePic>
-      </Header>
-      <Content>
-        <Card title="Entrepreneur" subtitle="test 1" icon={faRocket} full gradient={3}  />
-        <Card title="Full-Stack Developer" subtitle="test 1" icon={faLayerGroup} />
-        <Card title="Blockchain Developer" subtitle="test 1" icon={faEthereum} />
-        <Card title="PhD in Theoretical Physics" subtitle="test 1" icon={faAtom}
-          full gradient={2} />
-        <Card title="Prototyping" subtitle="test 1" icon={faScrewdriver} />
-        <Card title="Artificial Intelligence" subtitle="test 1" icon={faRobot} />
-      </Content>
-    </Layout>
-  )
-}
-
-export default Home;

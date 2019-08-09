@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -38,7 +40,8 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: '#0070f3'
+    primary: '#0070f3',
+    primaryHover: '#65d2e9'
   }
 }
 

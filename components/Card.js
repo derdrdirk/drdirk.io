@@ -17,7 +17,7 @@ const Card = (props) => (
       </svg>
       {props.icon && <StyledIcon icon={props.icon} /> }
       <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
+      {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
     </StyledCard>
   </StyledGrid>
 )
@@ -70,6 +70,9 @@ const StyledIcon = styled(FontAwesomeIcon)`
   path {
     fill: url(#lgrad);
   }
+`
+const Subtitle = styled.h2`
+  font-family: FontLight;
 `
 
 export default Card
