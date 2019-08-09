@@ -8,8 +8,8 @@ const circleSize = 55
 export default () => (
   <Layout>
     <Header>
-      <h1>Timeline</h1>
-      <h3>Study and Work</h3>
+      <h1>Curriculum Vitae</h1>
+      <h3>Academic and Professional</h3>
     </Header>
     <TimelineContainer>
       <Timeline>
@@ -17,21 +17,38 @@ export default () => (
           <EntryPoint year={2019} />
           <h3>Ph.D. in Theoretical Particle Physics</h3>
           <h4>Autonomous University of Barcelona</h4>
-          <Card title="The QCD Strong Coupling from Hadronic Tau Decays" subtitle="lol" backgroundColor="white" textAlign="left" />
+          <Card
+            title="Thesis: The QCD Strong Coupling from Hadronic Tau Decays"
+            subtitle="Writing a C++ program to extract the strong coupling from CERN within the framework of QCD Sum Rules.
+            Analysing the effects of Quark-Hadron Duality. Probing the validity of FOPT and CIPT."
+            backgroundColor="white"
+            textAlign="left"
+            extras={{pdf: 'phdThesis.pdf', git: 'https://github.com/phd-dirk/FESR'}}
+          />
         </Entry>
         <Entry>
           <EntryPoint year={2015} />
           <h3>M.Sc. in Theoretical Particle Physics</h3>
-          <h4>jojo</h4>
-          <Card title="Thesis" subtitle="lol" backgroundColor="white" textAlign="left" />
-          <br />
-          <Card title="Paper" subtitle="lol" backgroundColor="white" textAlign="left" />
+          <h4>Autonomous University of Barcelona</h4>
+          <Card
+            title="Thesis: 1-Loop Anomalous Dimensions of 4-Quark Operators"
+            subtitle="Calculating the Anomalous Dimension matrix of 4-Quark Operators with the help of Feynman Diagram techniques."
+            backgroundColor="white"
+            textAlign="left"
+            extras={{pdf: 'masterThesis.pdf', git: 'https://github.com/phd-dirk/MasterThesis'}}
+          />
         </Entry>
         <Entry>
           <EntryPoint year={2014} />
           <h3>B.Sc. in Theoretical Condensed Matter Physics</h3>
-          <h5>jojo</h5>
-          <Card title="Thesis" subtitle="lol" backgroundColor="white" textAlign="left" />
+          <h4>Goethe University Frankfurt</h4>
+          <Card
+            title="Thesis: Band Structure Studies of Graphene and Modified Graphene Structures"
+            subtitle="Using Density Functional Theory with the FPLO Software to simulate Graphene and extract its properties."
+            backgroundColor="white"
+            textAlign="left"
+            extras={{pdf: 'bachelorThesis.pdf', git: 'https://github.com/phd-dirk/Bachelor'}}
+          />
         </Entry>
       </Timeline>
     </TimelineContainer>
@@ -47,7 +64,21 @@ const Header = styled.section`
   justify-content: center;
   flex-direction: column;
   background-size: cover;
-  background-image: url('/static/images/road.png')
+  background-image: url('/static/images/road.png');
+
+  > h1 {
+    color: rgb(45, 64, 81);
+    font-family: FontLight;
+    font-size: 42px;
+  }
+  > h3 {
+    font-family: FontRegular, sans-serif;
+    font-size: 20px;
+    line-height: 1.75;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(127, 129, 152);
+  }
 `
 const TimelineContainer = styled.div`
   background-color: rgb(249, 250, 252);

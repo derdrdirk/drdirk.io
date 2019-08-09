@@ -5,6 +5,8 @@ import makeCarousel from 'react-reveal/makeCarousel';
 import withReveal from '../components/withReveal'
 import Fade from 'react-reveal/Fade'
 import PropTypes from 'prop-types'
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const Card = (props) => (
   <StyledGrid {...props}>
@@ -18,9 +20,25 @@ const Card = (props) => (
       {props.icon && <StyledIcon icon={props.icon} /> }
       <h1>{props.title}</h1>
       {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
+      {props.extras && displayExtras(props.extras)}
     </StyledCard>
   </StyledGrid>
 )
+
+const displayExtras = (extras) => {
+  const entries = Object.entries(extras)
+  return (
+    <Extras>
+      {entries.map(
+        (entry) => entry[0] === 'pdf' ? (
+          <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>
+        ) : (
+          <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
+        )
+      )}
+    </Extras>
+  )
+}
 
 Card.propTypes = {
   backgroundColor: PropTypes.string,
@@ -74,5 +92,13 @@ const StyledIcon = styled(FontAwesomeIcon)`
 const Subtitle = styled.h2`
   font-family: FontLight;
 `
-
+const Extras = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  > a {
+    color: ${props => props.theme.colors.primary};
+    font-size: 2rem;
+    margin-right: 20px;
+  }
+`
 export default Card
