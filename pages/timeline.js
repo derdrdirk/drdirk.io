@@ -18,7 +18,8 @@ export default () => {
       </Header>
       <Control>
         <CtrlButton left onClick={chooseCurriculum('academic')} active={curriculum === 'academic'}>Academic</CtrlButton>
-        <CtrlButton onClick={chooseCurriculum('professional')} active={curriculum === 'professional'}>Professional</CtrlButton>
+        <CtrlButton center onClick={chooseCurriculum('professional')} active={curriculum === 'professional'}>Professional</CtrlButton>
+        <CtrlButton right onClick={chooseCurriculum('interests')} active={curriculum === 'interests'}>Interests</CtrlButton>
       </Control>
       <TimelineContainer>
         {curriculum === 'academic' ? <Academic /> : <Professional />}
@@ -40,7 +41,7 @@ const Academic = () => (
         backgroundColor="white"
         textAlign="left"
         extras={{pdf: 'phdThesis.pdf', git: 'https://github.com/phd-dirk/FESR'}}
-      />
+      />0
     </Entry>
     <Entry>
       <EntryPoint year={2015} />
@@ -240,8 +241,12 @@ const Control = styled.div`
   top: -30px;
 `
 const CtrlButton = styled.button`
-  width: 50%;
-  border-radius: ${props => props.left ? '6px 0px 0px 6px' : '0px 6px 6px 0px;'};
+  width: 33.33%;
+  border-radius: ${props => {
+    if(props.left) return '6px 0px 0px 6px'
+    if(props.right) return '0px 6px 6px 0px'
+    return '0'
+  }};
   color: rgb(45, 64, 81);
   font-size: 18px;
   text-align: center;
