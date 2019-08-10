@@ -14,7 +14,7 @@ export default () => {
         <Description>
           <h1>I am Dr. Dirk Hornung,</h1>
           <p>a recently graduated theoretical physics PhD. I am an entrepreneur, full stack developer, blockchain architect and creator. I have a passion for discovering new things. Lately I am studying Deep Learning and build IOT devices.</p>
-          <LinkButton href="/timeline"><a>Discover me</a></LinkButton>
+          <LinkButton href="/timeline"><a className="dark">Discover me</a></LinkButton>
         </Description>
         <Video
           src="https://www.youtube.com/embed/Om1DGAa7Cgw?autoplay=1&mute=1&rel=0"

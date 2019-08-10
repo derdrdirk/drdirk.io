@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: white;
+    color: '#0070f3';
     text-decoration: none;
     font-family: fontRegular;
     font-weight: 400;
@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       color: #65d2e9;
     }
+  }
+
+  .dark {
+    color: white;
   }
 
   // center slider images

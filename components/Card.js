@@ -5,8 +5,8 @@ import makeCarousel from 'react-reveal/makeCarousel';
 import withReveal from '../components/withReveal'
 import Fade from 'react-reveal/Fade'
 import PropTypes from 'prop-types'
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faFilePdf, faLink} from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 const Card = (props) => (
   <StyledGrid {...props}>
@@ -30,11 +30,18 @@ const displayExtras = (extras) => {
   return (
     <Extras>
       {entries.map(
-        (entry) => entry[0] === 'pdf' ? (
-          <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>
-        ) : (
-          <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
-        )
+        (entry) => {
+          switch(entry[0]) {
+          case 'pdf':
+            return <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>
+          case 'git':
+            return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
+          case 'youtube':
+            return entry[1].map((e) => <a key={entry[1]} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)
+          default:
+            return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faLink} /></a>
+          }
+        }
       )}
     </Extras>
   )
@@ -63,6 +70,7 @@ const StyledCard = withReveal(styled.div`
   flex-direction: column;
   width: 100%;
   padding: 60px;
+  margin-bottom: 20px;
   text-align: ${(props) => props.textAlign ? props.textAlign : 'center'};
   border-radius: 12px;
   color: ${(props) => props.dark ? 'white' : 'black'};

@@ -77,13 +77,13 @@ const StyledUl = styled(animated.div)`
       <NavigationContainer style={props}>
         <StyledUl>
           <li>
-            <Link href="/"><a>Home</a></Link>
+            <Link href="/"><a className="dark">Home</a></Link>
           </li>
           <li>
-            <Link href="/timeline"><a>Timeline</a></Link>
+            <Link href="/timeline"><a className="dark">Timeline</a></Link>
           </li>
           <li>
-            <Link href="/portfolio"><a>Portfolio</a></Link>
+            <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
           </li>
         </StyledUl>
       </NavigationContainer>
