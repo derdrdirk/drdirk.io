@@ -37,8 +37,10 @@ const displayExtras = (extras) => {
           case 'git':
             return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
           case 'youtube':
-            return entry[1].map((e) => <a key={entry[1]} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)
+            return entry[1].map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)
           default:
+            if(Array.isArray(entry[1]))
+              return entry[1].map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faLink} /></a>)
             return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faLink} /></a>
           }
         }

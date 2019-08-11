@@ -9,6 +9,16 @@ export default () => {
   const [curriculum, setCurriculum] = useState('academic')
   const chooseCurriculum = (curriculum) => () => setCurriculum(curriculum)
 
+  let timeline
+  switch(curriculum) {
+  case 'academic':
+    timeline = <Academic />
+    break
+  case 'professional':
+    timeline = <Professional />
+    break
+  default: timeline = <Interests />;
+  }
 
   return (
     <Layout>
@@ -22,7 +32,7 @@ export default () => {
         <CtrlButton right onClick={chooseCurriculum('interests')} active={curriculum === 'interests'}>Interests</CtrlButton>
       </Control>
       <TimelineContainer>
-        {curriculum === 'academic' ? <Academic /> : <Professional />}
+        {timeline}
       </TimelineContainer>
     </Layout>
   )
@@ -41,7 +51,7 @@ const Academic = () => (
         backgroundColor="white"
         textAlign="left"
         extras={{pdf: 'phdThesis.pdf', git: 'https://github.com/phd-dirk/FESR'}}
-      />0
+      />
     </Entry>
     <Entry>
       <EntryPoint year={2015} />
@@ -207,6 +217,35 @@ const Professional = () => (
   </Timeline>
 )
 
+const Interests = () => (
+  <Timeline>
+    <Entry>
+      <EntryPoint year={2019} />
+      <h3><a href="https://cysae.com" target="_blanc">Deep Learning</a></h3>
+      <h4>Deeplearning.ai</h4>
+      <p>
+        Started Andrew Ng second Machine Learning course on Coursera.
+      </p>
+    </Entry>
+    <Entry>
+      <EntryPoint year={2019} />
+      <h3><a href="https://cysae.com" target="_blanc">Prototyping</a></h3>
+      <h4>3D Printing, Electronics and IOT</h4>
+      <Card
+        title="Building a Lab and designing IOT Home Security"
+        subtitle="Successfully equipped a prototyping lab with an Ender-3 3D printer, a 3018 CNC milling machine/ laser engraver.
+                  Designing custom Home Security IOT devices within Fusion 360 using Arduino, ESP32 and lots of sensors like cameras,
+                  vibration sensors, distance sensors and finger print sensors. Installing a VPN and Zoneminder on two Raspberrypis, which
+                  will be moved on the NAS Killer v3.0."
+        backgroundColor="white"
+        textAlign="left"
+        extras={{git: 'https://github.com/Knowledge91/esp32cam', web: ['https://www.serverbuilds.net/nas-killer-v30', 'http://www.pivpn.io', 'https://zoneminder.com/']}}
+      />
+    </Entry>
+  </Timeline>
+)
+
+
 const Header = styled.section`
   height: 550px;
   width: 100vw;
@@ -237,8 +276,8 @@ const Control = styled.div`
   width: 70vw;
   height: 60px;
   margin: auto;
-  position: relative;
-  top: -30px;
+  margin-top: -30px;
+  z-index: 1;
 `
 const CtrlButton = styled.button`
   width: 33.33%;
@@ -265,6 +304,7 @@ const TimelineContainer = styled.div`
   background-color: rgb(249, 250, 252);
   width: 100vw;
   padding: 70px;
+  margin-top: -30px;
 `
 const Timeline = styled.div`
   position: relative;
