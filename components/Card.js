@@ -7,6 +7,7 @@ import Fade from 'react-reveal/Fade'
 import PropTypes from 'prop-types'
 import { faFilePdf, faLink} from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import ReactMarkdown from 'react-markdown'
 
 const Card = (props) => (
   <StyledGrid {...props}>
@@ -17,38 +18,15 @@ const Card = (props) => (
 		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
 	      </linearGradient>
       </svg>
+      {props.header && <h4>{props.header}</h4>}
       {props.icon && <StyledIcon icon={props.icon} /> }
       <h1>{props.title}</h1>
-      {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
-      {props.extras && displayExtras(props.extras)}
+
+      {props.subtitle && <ReactMarkdown source={props.subtitle}/>}
+      {displayAttachements(props)}
     </StyledCard>
   </StyledGrid>
 )
-
-const displayExtras = (extras) => {
-  const entries = Object.entries(extras)
-  return (
-    <Extras>
-      {entries.map(
-        (entry) => {
-          switch(entry[0]) {
-          case 'pdf':
-            return <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>
-          case 'git':
-            return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
-          case 'youtube':
-            return entry[1].map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)
-          default:
-            if(Array.isArray(entry[1]))
-              return entry[1].map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faLink} /></a>)
-            return <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faLink} /></a>
-          }
-        }
-      )}
-    </Extras>
-  )
-}
-
 Card.propTypes = {
   backgroundColor: PropTypes.string,
   dark: PropTypes.bool,
@@ -56,6 +34,25 @@ Card.propTypes = {
   gradient: PropTypes.number,
   textAlign: PropTypes.string
 }
+
+const displayAttachements = (entry) => {
+  return (
+    <Attachements>
+      {entry.pdfs && entry.pdfs.map((e) => <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>)}
+      {entry.gits && entry.gits.map((e) => <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>)}
+      {entry.youtubeLinks && entry.youtubeLinks.map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)}
+      {entry.webs && entry.webs.map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faLink} /></a>)}
+    </Attachements>
+  )
+}
+const addLineBreaks = string =>
+      string.split('\n').map((text, index) => (
+        <React.Fragment key={`${text}-${index}`}>
+          {text}
+          <br />
+        </React.Fragment>
+      ));
+
 
 
 
@@ -90,6 +87,19 @@ const StyledCard = withReveal(styled.div`
         default: return ''
     }
   }}
+  > h1 {
+    margin: 0;
+    margin-bottom: 25px;
+  }
+  > h4 {
+    margin: 0;
+    margin-bottom: 25px;
+  }
+  > p {
+    margin: 0;
+    font-family: FontLight;
+    font-size: 1.2rem;
+  }
  `, <Fade />)
 
 const StyledIcon = styled(FontAwesomeIcon)`
@@ -99,10 +109,8 @@ const StyledIcon = styled(FontAwesomeIcon)`
     fill: url(#lgrad);
   }
 `
-const Subtitle = styled.h2`
-  font-family: FontLight;
-`
-const Extras = styled.div`
+
+const Attachements = styled.div`
   display: flex;
   justify-content: flex-end;
   > a {

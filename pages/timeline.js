@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
 import styled from 'styled-components'
+import portfolio from '../components/portfolioList.js'
 
 const circleSize = 55
 
@@ -9,16 +10,18 @@ export default () => {
   const [curriculum, setCurriculum] = useState('academic')
   const chooseCurriculum = (curriculum) => () => setCurriculum(curriculum)
 
-  let timeline
-  switch(curriculum) {
-  case 'academic':
-    timeline = <Academic />
-    break
-  case 'professional':
-    timeline = <Professional />
-    break
-  default: timeline = <Interests />;
-  }
+  // let timeline
+  // switch(curriculum) {
+  // case 'academic':
+  //   timeline = <Academic />
+  //   break
+  // case 'professional':
+  //   timeline = <Professional />
+  //   break
+  // default: timeline = <Interests />;
+  // }
+
+  const list = filterSortPortfolio(curriculum)
 
   return (
     <Layout>
@@ -32,53 +35,36 @@ export default () => {
         <CtrlButton right onClick={chooseCurriculum('interests')} active={curriculum === 'interests'}>Interests</CtrlButton>
       </Control>
       <TimelineContainer>
-        {timeline}
+        <Timeline>
+          {list.map((entry) => (
+            <Entry>
+              <EntryPoint year={entry.year} />
+              <Card
+                {...entry}
+                backgroundColor="white"
+                textAlign="left"
+              />
+            </Entry>
+          ))}
+        </Timeline>
       </TimelineContainer>
     </Layout>
   )
 }
 
-const Academic = () => (
-  <Timeline>
-    <Entry>
-      <EntryPoint year={2019} />
-      <h3>Ph.D. in Theoretical Particle Physics</h3>
-      <h4>Autonomous University of Barcelona</h4>
-      <Card
-        title="Thesis: The QCD Strong Coupling from Hadronic Tau Decays"
-        subtitle="Writing a C++ program to extract the strong coupling from CERN within the framework of QCD Sum Rules.
-        Analysing the effects of Quark-Hadron Duality. Probing the validity of FOPT and CIPT."
-        backgroundColor="white"
-        textAlign="left"
-        extras={{pdf: 'phdThesis.pdf', git: 'https://github.com/phd-dirk/FESR'}}
-      />
-    </Entry>
-    <Entry>
-      <EntryPoint year={2015} />
-      <h3>M.Sc. in Theoretical Particle Physics</h3>
-      <h4>Autonomous University of Barcelona</h4>
-      <Card
-        title="Thesis: 1-Loop Anomalous Dimensions of 4-Quark Operators"
-        subtitle="Specializing in theoretical physics with topics as Quantum Field Theory and the Standard Model, while finding a new working group under the lead of Prof. Dr. Matthias Jamin at the Institute of High Energy Physics (IFAE) of the Universitat Autònoma de Barcelona. Right now researching Low-energy QCD and the determination of Standard Model Parameters."
-        backgroundColor="white"
-        textAlign="left"
-        extras={{pdf: 'masterThesis.pdf', git: 'https://github.com/phd-dirk/MasterThesis'}}
-      />
-    </Entry>
-    <Entry>
-      <EntryPoint year={2014} />
-      <h3>B.Sc. in Theoretical Condensed Matter Physics</h3>
-      <h4>Goethe University Frankfurt</h4>
-      <Card
-        title="Thesis: Band Structure Studies of Graphene and Modified Graphene Structures"
-        subtitle="Working in the group of Prof. Dr. Roser Valentí at the Institute of Theoretical Physics of the Goethe Universität Frankfurt (Germany).Writing my first scientific work ’Band structure studies of graphene and modified graphene structures’, after understanding the techniques of density functional theory and many body problems."
-        backgroundColor="white"
-        textAlign="left"
-        extras={{pdf: 'bachelorThesis.pdf', git: 'https://github.com/phd-dirk/Bachelor'}}
-      />
-    </Entry>
-  </Timeline>
-)
+const filterSortPortfolio = (type) => {
+  return portfolio
+    .filter(entry => entry.timeline && entry.timeline === type)
+    .sort((a, b) => {
+      if (a.date < b.date) {
+        return -1;
+      }
+      if (a.date > b.date) {
+        return 1;
+      }
+      return 0;
+    })
+}
 
 const Professional = () => (
   <Timeline>
