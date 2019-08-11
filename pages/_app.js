@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react';
 import App, { Container } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../redux'
+import { Provider } from 'react-redux'
+
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
@@ -61,19 +65,21 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
 
     return (
       <Fragment>
-      <GlobalStyle />
-      <Container>
-        <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </Container>
+        <GlobalStyle />
+        <Container>
+          <Provider store={store}>
+            <ThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </Provider>
+        </Container>
       </Fragment>
     );
   }
 }
 
-export default MyApp;
+export default withRedux(initStore, { debug: true })(MyApp);

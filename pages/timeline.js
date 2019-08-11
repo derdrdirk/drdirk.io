@@ -37,7 +37,7 @@ export default () => {
         </Control>
         <Timeline>
           {list.map((entry) => (
-            <Entry>
+            <Entry key={entry.title}>
               <EntryPoint year={entry.year} />
               <Card
                 {...entry}

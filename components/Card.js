@@ -9,8 +9,24 @@ import { faFilePdf, faLink} from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment } from '../redux/actions'
 
-const Card = (props) => (
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    increment: dispatch(increment)
+  }
+}
+
+const Card = (props) => {
+  const counter = useSelector(state => state.counter)
+  const dispatch = useDispatch()
+  return (
   <StyledGrid {...props}>
     <StyledCard {...props}>
       <svg width="0" height="0">
@@ -21,14 +37,15 @@ const Card = (props) => (
       </svg>
       {props.header && <h4>{props.header}</h4>}
       {props.icon && <StyledIcon icon={props.icon} /> }
-      <h1>{props.title}</h1>
+      <h1 onClick={() => dispatch(increment)}>{props.title}{counter}</h1>
 
       {props.subtitle && <ReactMarkdown source={props.subtitle}/>}
-      {props.timeline === 'professional' && <Link><PortfolioA href="/portfolio">Show projects</PortfolioA></Link> }
+      {props.timeline === 'professional' && <Link href="/portfolio"><PortfolioA>Show projects</PortfolioA></Link> }
       {displayAttachements(props)}
     </StyledCard>
   </StyledGrid>
-)
+  )
+}
 Card.propTypes = {
   backgroundColor: PropTypes.string,
   dark: PropTypes.bool,
@@ -40,8 +57,8 @@ Card.propTypes = {
 const displayAttachements = (entry) => {
   return (
     <Attachements>
-      {entry.pdfs && entry.pdfs.map((e) => <a key={entry[1]} href={`static/attachements/${entry[1]}`} download><FontAwesomeIcon icon={faFilePdf} /></a>)}
-      {entry.gits && entry.gits.map((e) => <a key={entry[1]} href={entry[1]} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>)}
+      {entry.pdfs && entry.pdfs.map((e) => <a key={e} href={`static/attachements/${e}`} download><FontAwesomeIcon icon={faFilePdf} /></a>)}
+      {entry.gits && entry.gits.map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faGithub} /></a>)}
       {entry.youtubeLinks && entry.youtubeLinks.map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faYoutube} /></a>)}
       {entry.webs && entry.webs.map((e) => <a key={e} href={e} target="_blank"><FontAwesomeIcon icon={faLink} /></a>)}
     </Attachements>
