@@ -29,12 +29,12 @@ export default () => {
         <h1>Curriculum Vitae</h1>
         <h3>Academic and Professional</h3>
       </Header>
-      <Control>
-        <CtrlButton left onClick={chooseCurriculum('academic')} active={curriculum === 'academic'}>Academic</CtrlButton>
-        <CtrlButton center onClick={chooseCurriculum('professional')} active={curriculum === 'professional'}>Professional</CtrlButton>
-        <CtrlButton right onClick={chooseCurriculum('interests')} active={curriculum === 'interests'}>Interests</CtrlButton>
-      </Control>
       <TimelineContainer>
+        <Control>
+          <CtrlButton left onClick={chooseCurriculum('academic')} active={curriculum === 'academic'}>Academic</CtrlButton>
+          <CtrlButton center onClick={chooseCurriculum('professional')} active={curriculum === 'professional'}>Professional</CtrlButton>
+          <CtrlButton right onClick={chooseCurriculum('interests')} active={curriculum === 'interests'}>Interests</CtrlButton>
+        </Control>
         <Timeline>
           {list.map((entry) => (
             <Entry>
@@ -261,9 +261,12 @@ const Control = styled.div`
   justify-content: center;
   width: 70vw;
   height: 60px;
+  left: 0;
+  right: 0;
   margin: auto;
-  margin-top: -30px;
   z-index: 1;
+  position: absolute;
+  top: -30px;
 `
 const CtrlButton = styled.button`
   width: 33.33%;
@@ -290,7 +293,7 @@ const TimelineContainer = styled.div`
   background-color: rgb(249, 250, 252);
   width: 100vw;
   padding: 70px;
-  margin-top: -30px;
+  position: relative;
 `
 const Timeline = styled.div`
   position: relative;

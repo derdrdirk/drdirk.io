@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: '#0070f3';
+    color: #0070f3;
     text-decoration: none;
     font-family: fontRegular;
     font-weight: 400;

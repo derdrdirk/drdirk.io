@@ -7,6 +7,7 @@ import Fade from 'react-reveal/Fade'
 import PropTypes from 'prop-types'
 import { faFilePdf, faLink} from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 
 const Card = (props) => (
@@ -23,7 +24,7 @@ const Card = (props) => (
       <h1>{props.title}</h1>
 
       {props.subtitle && <ReactMarkdown source={props.subtitle}/>}
-      {props.timeline === 'professional' && <Link><a></a></Link> }
+      {props.timeline === 'professional' && <Link><PortfolioA href="/portfolio">Show projects</PortfolioA></Link> }
       {displayAttachements(props)}
     </StyledCard>
   </StyledGrid>
@@ -119,5 +120,10 @@ const Attachements = styled.div`
     font-size: 2rem;
     margin-right: 20px;
   }
+`
+
+const PortfolioA = styled.a`
+  position: absolute;
+  bottom: 30px;
 `
 export default Card
