@@ -38,6 +38,13 @@ export default [{
   title: 'Anomalous dimensions of four-quark operators and renormalon structure of mesonic two-point correlators',
   tags: ['Physics', 'Quantum Field Theory']
 }, {
+  header: 'CTO',
+  subtitle: 'CYSAE is a Legaltech with a focus on Blockchain. I was responsible for a team of developers, the technological architecture and its execution.',
+  title: 'CYSAE SERVERLA S.L.',
+  timeline: 'professional',
+  webs: ['https://www.cysae.com'],
+  year: 2019,
+}, {
   title: 'Stamper',
   company: 'CYSAE',
   tags: ['React', 'Redux', 'Ant-Design', 'Startup', 'GraphQL', 'Docker', 'AWS', 'S3', 'Ethereum', 'Blockchain', 'Prisma', 'MySQL', 'AWS RDS'],
@@ -53,6 +60,11 @@ export default [{
   title: 'Utility Token',
   company: 'CYSAE',
   tags: ['Blockchain', 'Node', 'Express', 'REST API', 'Ethereum', 'Startup', 'Azure']
+}, {
+  header: 'CTO and Co-Founder',
+  title: 'Alda S.L.',
+  timeline: 'professional',
+  year: 2018,
 }, {
   title: 'Chatbot',
   company: 'Alda',
@@ -70,6 +82,11 @@ export default [{
   company: 'Alda',
   tags: ['React', 'Liferay', 'CSS', 'JavaScript', 'Java', 'Photoshop', 'AWS Lambda', 'Dialogflow'],
 }, {
+  header: 'CTO and Co-Founder',
+  title: 'WeGoLoco',
+  timeline: 'professional',
+  year: 2017,
+}, {
   title: 'Ecommerce IOS App',
   company: 'WeGoLoco',
   tags: ['Swift', 'AWS Cognito', 'AWS S3'],
@@ -78,6 +95,11 @@ export default [{
   company: 'WeGoLoco',
   tags: ['Wordpress', 'Google Analytics', 'CSS', 'Photoshop', 'AWS Route53'],
 }, {
+  header: 'CEO and Co-Founder',
+  title: 'FuldaCity GbR',
+  timeline: 'professional',
+  year: 2017,
+}, {
   title: 'FuldaCity Website',
   company: 'FuldaCity',
   tags: ['Wordpress', 'Google Analytics', 'CSS', 'Photoshop', 'AWS Route53', 'PHP']
@@ -85,6 +107,17 @@ export default [{
   title: 'FuldaCity App',
   company: 'FuldaCity',
   tags: ['Cordova', 'Meteor', 'React', 'Heroku', 'MongoDB', 'Javascript']
+}, {
+  header: 'Partner and Co-Founder',
+  title: 'Fulda Strategy Group GbR',
+  timeline: 'professional',
+  year: 2013,
+},{
+  header: 'CEO and Co-Founder',
+  title: 'Eevents Fulda GbR',
+  timeline: 'professional',
+  webs: ['https://eevents-fulda.de'],
+  year: 2010,
 }, {
   title: 'Eevents Website',
   company: 'Eevents Fulda',
@@ -98,9 +131,14 @@ export default [{
   company: 'Eevents Fulda',
   tags: ['DJ', 'Music', 'Traktor']
 }, {
+  header: 'Founder',
+  title: 'Hornung Webdesign e.K.',
+  timeline: 'professional',
+  year: 2009,
+},{
   title: 'Hornung Webdesign Website',
   company: 'Hornung Webdesign',
-  tags: ['HTML', 'CSS', 'jQuery', 'JavaScript']
+  tags: ['HTML', 'CSS', 'jQuery', 'JavaScript'],
 }, {
   title: 'DJ Abdul',
   company: 'Hornung Webdesign',
@@ -129,4 +167,14 @@ export default [{
   title: 'Spracherlebniscamp Wasserkuppe: Lady Game',
   company: 'Hornung Webdesign',
   tags: ['Flash', 'ActionScript']
+}, {
+  header: 'PHP Developer and Data Analyst',
+  title: 'eMexs Marketing S.L.',
+  timeline: 'professional',
+  year: 2016,
+}, {
+  header: 'Wordpress specialist and PHP Developer',
+  title: 'B2 Performance S.L.',
+  timeline: 'professional',
+  year: 2017,
 }]

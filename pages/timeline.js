@@ -7,7 +7,7 @@ import portfolio from '../components/portfolioList.js'
 const circleSize = 55
 
 export default () => {
-  const [curriculum, setCurriculum] = useState('academic')
+  const [curriculum, setCurriculum] = useState('professional')
   const chooseCurriculum = (curriculum) => () => setCurriculum(curriculum)
 
   // let timeline

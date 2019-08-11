@@ -23,6 +23,7 @@ const Card = (props) => (
       <h1>{props.title}</h1>
 
       {props.subtitle && <ReactMarkdown source={props.subtitle}/>}
+      {props.timeline === 'professional' && <Link><a></a></Link> }
       {displayAttachements(props)}
     </StyledCard>
   </StyledGrid>
