@@ -203,7 +203,7 @@ export default [{
   tags: ['Flash', 'ActionScript']
 }, {
   header: 'PHP Developer and Data Analyst',
-  subttitle: 'Helping in a hotel revenue management system based on codeigniter and on a marketing dashboard for hotels.',
+  subtitle: 'Helping in a hotel revenue management system based on codeigniter and on a marketing dashboard for hotels.',
   title: 'eMexs Marketing S.L.',
   timeline: 'professional',
   year: 2016,
@@ -213,4 +213,84 @@ export default [{
   title: 'B2 Performance S.L.',
   timeline: 'professional',
   year: 2017,
+}, {
+  subtitle: 'Started Andrew Ng second Machine Learning course on Coursera.',
+  title: 'Deep Learning',
+  timeline: 'interests',
+  year: 2019,
+}, {
+  subtitle: `### 3D Printing, Electronics and IOT.
+Successfully equipped a prototyping lab with an Ender-3 3D printer, a 3018 CNC milling machine/ laser engraver.
+Designing custom Home Security IOT devices within Fusion 360 using Arduino, ESP32 and lots of sensors like cameras,
+vibration sensors, distance sensors and finger print sensors. Installing a VPN and Zoneminder on two Raspberrypis, which
+will be moved on the NAS Killer v3.0.`,
+  title: 'Prototyping',
+  timeline: 'interests',
+  year: 2019,
+}, {
+  subtitle: 'I got selected to participate in the "Imagine-Express-Train".',
+  title: 'Winner: Developer Dreamer',
+  timeline: 'interests',
+  type: 'award',
+  webs: ['https://imagine.cc/'],
+  year: 2019,
+}, {
+  subtitle: 'I got selected to one of the ten finalists of more than 500 applicants who sent in a one minute video to be sponsored for a Silicon Valley trip.',
+  title: 'Imagine Silicon Valley 2019 - Finalist',
+  timeline: 'interests',
+  type: 'award',
+  year: 2019,
+  youtube: ['https://www.youtube.com/watch?v=Om1DGAa7Cgw'],
+  webs: ['http://blog.imagine.cc/2019/06/02/vote-for-your-favourite-finalist-to-dreamer12-of-imagine-siliconvalley2019/'],
+}, {
+  subtitle: 'Awarded 1rst price at FintechStage\'s event Fintech War over +16 fintech startups plus a 1k€ cash price.',
+  title: 'Best Fintech Pitch',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+  webs: ['https://www.fintechstage.com'],
+}, {
+  subtitle: 'Awarded a 4K€ cash price at MetLife Iberia in order to keep promoting Financial Inclusion. The initiative is part of a global competition to identify and support entrepreneurs, non-profits and impact organizations that help advance financial inclusion for an estimated 2 billion people across the world.',
+  title: 'MetLife Iberia Financial Inclusion Award',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+  webs: ['http://www.inclusionplus.com'],
+}, {
+  gits: ['https://github.com/Knowledge91/AdidasHackathonFinals'],
+  subtitle: 'Our team #kiwi won the price for the most confident team with a #blockchain based solution. We tried to democratize data to set the right incentives for an optimized data value creation. With the help of the blockchain we give the user (data producer) the full power of his owned data and make it ( if the user allows it ) anonymized available for any data scientist who can add value. These data scientists then upload their models to our API and we sell the outcomes on our data market place. Every time a client demands a prediction from our market place he has to pay the data scientist and the user, which is immutable organized in a smart contract. For fun we also created #adidasium an #ICO which could be adidas own monetary system',
+  title: 'Adidas Hackathon Finals: Winner of most confident team',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+}, {
+  gits: ['https://github.com/Knowledge91/adidasHackathon'],
+  subtitle: 'Winner of the #adidasHackathonBCN!!! This weekend I joined an amazing team #kiwi🥝 of 5 persons to develop a full fledge facial recognizer. Within the last 48h we created a system that could uniquely identify your face and track emotions to a very accurate level. We used this to train a model to predict the probability of a client purchasing a certain item in an #adidas store.',
+  title: '1st place at the Adidas hackathon (Barcelona)',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+}, {
+  gits: ['https://github.com/knowledge91/panopticon'],
+  pdfs: ['panopticon.pdf'],
+  subtitle: 'I developed a blockchain solution with the spanish winning team of the global legal hackathon for the project panopticon. panopticon is a legal tech solution to enhance cross-border supply chain compliance with blockchain and smart contracts.',
+  title: 'Panopticon Smart Contract',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+}, {
+  subtitle: 'Developed legal tech tool that helps companies and other agents to easily take decisions, whether in shareholders meetings, the board of directors or any other circumstance which requires a consensus of several persons. Digitalizing the democratic process of defining the future of a company, our tool was based on the blockchain and smart contracts to help the deciding boards creating secure minutes whenever they want from wherever they want.',
+  tags: ['Blockchain', 'Ethereum', 'Solidity'],
+  title: '2nd Place in Global Legal Hackathon (Madrid)',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
+}, {
+  gits: ['https://github.com/Knowledge91/IBelt'],
+  subtitle: 'Using the Adafruit to create a smart fabric belt with an integrated personal assistant to help blind people see.',
+  tags:['Arduino', 'Electronics', 'Prototyping', 'C++', 'Python', 'Dialogflow'],
+  title: 'IBelt - Accenture Smart Fabrics Hackathon',
+  timeline: 'interests',
+  type: 'award',
+  year: 2018,
 }]

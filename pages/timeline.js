@@ -70,14 +70,6 @@ const Interests = () => (
   <Timeline>
     <Entry>
       <EntryPoint year={2019} />
-      <h3><a href="https://cysae.com" target="_blanc">Deep Learning</a></h3>
-      <h4>Deeplearning.ai</h4>
-      <p>
-        Started Andrew Ng second Machine Learning course on Coursera.
-      </p>
-    </Entry>
-    <Entry>
-      <EntryPoint year={2019} />
       <h3><a href="https://cysae.com" target="_blanc">Prototyping</a></h3>
       <h4>3D Printing, Electronics and IOT</h4>
       <Card
