@@ -77,13 +77,14 @@ const StyledGrid = styled.div`
   width: 100%;
 `
 const StyledCard = withReveal(styled.div`
+  position: relative;
   height: 100%;
   display: flex;
   justify-content: space-between;
   algin-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 40px 40px 80px 40px;
+  padding: 40px 40px 100px 40px;
   margin-bottom: 20px;
   text-align: ${(props) => props.textAlign ? props.textAlign : 'center'};
   border-radius: 12px;block
@@ -127,7 +128,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 const Attachements = styled.div`
   position: absolute;
-  bottom: 50px;
+  bottom: 40px;
   right: 30px;
   > a {
     color: ${props => props.theme.colors.primary};
@@ -138,7 +139,7 @@ const Attachements = styled.div`
 
 const PortfolioA = styled.a`
   position: absolute;
-  bottom: 50px;
+  bottom: 40px;
   cursor: pointer;
 `
 export default Card
