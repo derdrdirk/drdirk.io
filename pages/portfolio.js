@@ -75,9 +75,12 @@ export default () => {
                 </Flipped>
               )
             } else {
+              delete rest.subtitle
               return (
                 <Flipped key={title} flipId={title}>
-                  <ListElement onClick={() => toggleFullScreen(title)}><Card title={title}/></ListElement>
+                  <ListElement onClick={() => toggleFullScreen(title)}>
+                    <Card title={title} {...rest}/>
+                  </ListElement>
                 </Flipped>
               )
             }
@@ -116,11 +119,14 @@ const List = styled.ul`
   padding-top: 100px;
   margin: auto;
   width: 90vw;
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-column-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // grid-template-columns: 30% 30% 30%;
+  // grid-column-gap: 16px;
 `
 const ListElement = styled.li`
-  display: block;
+  display: flex;
+  width: 32.5%;
   margin: 0 0 16px 0;
 `

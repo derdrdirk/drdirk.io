@@ -44,6 +44,11 @@ const GlobalStyle = createGlobalStyle`
       align-items: center !important;
       justify-content: center !important;
   }
+
+  .react-reveal {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 const theme = {

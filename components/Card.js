@@ -73,17 +73,20 @@ const StyledGrid = styled.div`
     grid-column-start: 1;
     grid-column-end: 3;
   `}
+  height: 100%;
+  width: 100%;
 `
 const StyledCard = withReveal(styled.div`
+  height: 100%;
   display: flex;
   justify-content: space-between;
   algin-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 60px;
+  padding: 40px 40px 80px 40px;
   margin-bottom: 20px;
   text-align: ${(props) => props.textAlign ? props.textAlign : 'center'};
-  border-radius: 12px;
+  border-radius: 12px;block
   color: ${(props) => props.dark ? 'white' : 'black'};
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px 0px;
@@ -123,8 +126,9 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `
 
 const Attachements = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  bottom: 50px;
+  right: 30px;
   > a {
     color: ${props => props.theme.colors.primary};
     font-size: 2rem;
@@ -134,7 +138,7 @@ const Attachements = styled.div`
 
 const PortfolioA = styled.a`
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   cursor: pointer;
 `
 export default Card
