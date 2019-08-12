@@ -9,22 +9,10 @@ import { faFilePdf, faLink} from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
-import { useSelector, useDispatch } from 'react-redux'
-import { increment } from '../redux/actions'
-
-const mapStateToProps = state => {
-  return {
-    counter: state.counter
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    increment: dispatch(increment)
-  }
-}
+import { useDispatch } from 'react-redux'
+import { increment, company } from '../redux/actions'
 
 const Card = (props) => {
-  const counter = useSelector(state => state.counter)
   const dispatch = useDispatch()
   return (
   <StyledGrid {...props}>
@@ -37,10 +25,15 @@ const Card = (props) => {
       </svg>
       {props.header && <h4>{props.header}</h4>}
       {props.icon && <StyledIcon icon={props.icon} /> }
-      <h1 onClick={() => dispatch(increment)}>{props.title}{counter}</h1>
+      <h1>{props.title}</h1>
 
       {props.subtitle && <ReactMarkdown source={props.subtitle}/>}
-      {props.timeline === 'professional' && <Link href="/portfolio"><PortfolioA>Show projects</PortfolioA></Link> }
+      {
+        props.timeline === 'professional' &&
+          <Link href="/portfolio">
+            <PortfolioA onClick={() => dispatch(company(props.company))}>Show projects</PortfolioA>
+          </Link>
+      }
       {displayAttachements(props)}
     </StyledCard>
   </StyledGrid>
@@ -142,5 +135,6 @@ const Attachements = styled.div`
 const PortfolioA = styled.a`
   position: absolute;
   bottom: 30px;
+  cursor: pointer;
 `
 export default Card

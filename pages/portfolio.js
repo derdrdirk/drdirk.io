@@ -5,63 +5,65 @@ import FullScreenModal from '../components/FullScreenModal'
 import styled from 'styled-components'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
-import portfolio from '../components/portfolioList'
+import { useSelector } from 'react-redux'
 
 
-for(const item of portfolio) {
-  item.fullscreen = false
-}
+// for(const item of portfolio) {
+//   item.fullscreen = false
+// }
 
 
-const tags = new Set()
-portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
+// const tags = new Set()
+// portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
+
 
 export default () => {
-  const [filter, setFilter] = useState({})
-  const [data, setData] = useState(portfolio)
+  // const [filter, setFilter] = useState({})
+  // const [data, setData] = useState(portfolio)
+  const portfolio = useSelector(state => state.portfolio)
 
-  const toggleFullScreen = (title) => {
-    setData(data.map(item => {
-      if(item.title !== title) return {...item, fullscreen: false}
-      return {...item, fullscreen: !item.fullscreen}
-    }))
-  }
+  // const toggleFullScreen = (title) => {
+  //   setData(data.map(item => {
+  //     if(item.title !== title) return {...item, fullscreen: false}
+  //     return {...item, fullscreen: !item.fullscreen}
+  //   }))
+  // }
 
-  const filteredData = data.filter(
-    ( data ) => {
-      if(filter.onlyProfessional && !data.isProfessional)
-        return false
+  // const filteredData = data.filter(
+  //   ( data ) => {
+  //     if(filter.onlyProfessional && !data.isProfessional)
+  //       return false
 
-      if(filter.onlyAcademic && data.isProfessional)
-        return false
+  //     if(filter.onlyAcademic && data.isProfessional)
+  //       return false
 
-      for(const tag of tags) {
-        if(filter[tag] && !data.tags.includes(tag))
-          return false
-      }
+  //     for(const tag of tags) {
+  //       if(filter[tag] && !data.tags.includes(tag))
+  //         return false
+  //     }
 
-      return true
-  })
+  //     return true
+  // })
 
-  const Filter = ({ filterProp, title }) => (
-    <Button
-      active={filter[filterProp]}
-      onClick={() => setFilter({...filter, [filterProp]: !filter[filterProp]})}
-    >
-      {title}
-    </Button>
-  )
+  // const Filter = ({ filterProp, title }) => (
+  //   <Button
+  //     active={filter[filterProp]}
+  //     onClick={() => setFilter({...filter, [filterProp]: !filter[filterProp]})}
+  //   >
+  //     {title}
+  //   </Button>
+  // )
 
   return (
     <Layout>
       <Controls>
-        <Filter filterProp="onlyProfessional" title="Professional"/>
-        <Filter filterProp="onlyAcademic" title="Academic"/>
-        {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)}
+        {/* <Filter filterProp="onlyProfessional" title="Professional"/> */}
+        {/* <Filter filterProp="onlyAcademic" title="Academic"/> */}
+        {/* {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)} */}
       </Controls>
-      <Flipper flipKey={JSON.stringify(filteredData)}>
+      <Flipper flipKey={JSON.stringify(portfolio)}>
         <List>
-          {filteredData.map(({ title, fullscreen, ...rest }) => {
+          {portfolio.map(({ title, fullscreen, ...rest }) => {
             if(fullscreen) {
               return (
                 <Flipped key={title} flipId={title}>

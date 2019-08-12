@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from '../types'
+import { COMPANY, RESET } from '../types'
 
-export const increment = { type: INCREMENT }
-export const decrement = { type: DECREMENT }
+export const company = (name) => ({ type: COMPANY, name })
+export const reset = {type: RESET}

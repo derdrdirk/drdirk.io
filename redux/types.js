@@ -1,2 +1,2 @@
-export const INCREMENT = 'increment'
-export const DECREMENT = 'decrement'
+export const COMPANY = 'company'
+export const RESET = 'reset'
