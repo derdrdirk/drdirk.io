@@ -11,6 +11,7 @@ import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux'
 import { increment, company } from '../redux/actions'
+import { tagColors } from '../components/tags'
 
 const Card = (props) => {
   const dispatch = useDispatch()
@@ -23,6 +24,11 @@ const Card = (props) => {
 		      <stop offset="100%" style={{stopColor: '#65d2e9', stopOpacity: 1}} />
 	      </linearGradient>
       </svg>
+    {props.tags && (
+      <Tags>
+        {props.tags.map(tag => <Tag tag={tag}>{tag}</Tag>)}
+      </Tags>
+    )}
       {props.header && <h4>{props.header}</h4>}
       {props.icon && <StyledIcon icon={props.icon} /> }
       <h1>{props.title}</h1>
@@ -104,6 +110,7 @@ const StyledCard = withReveal(styled.div`
     }
   }}
   > h1 {
+    font-size: 1.5rem;
     margin: 0;
     margin-bottom: 25px;
   }
@@ -136,10 +143,22 @@ const Attachements = styled.div`
     margin-right: 20px;
   }
 `
-
 const PortfolioA = styled.a`
   position: absolute;
   bottom: 40px;
   cursor: pointer;
 `
+const Tags = styled.ul`
+  margin-bottom: 16px;
+`
+const Tag = styled.li`
+  background-color: ${({tag}) => tag in tagColors ? tagColors[tag] : 'black' };
+  color: white;
+  padding: 5px;
+  display: inline-block;
+  margin: 3px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+`
+
 export default Card

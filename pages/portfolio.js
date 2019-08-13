@@ -129,4 +129,5 @@ const ListElement = styled.li`
   display: flex;
   width: 32.5%;
   margin: 0 0 16px 0;
+  cursor: pointer;
 `
