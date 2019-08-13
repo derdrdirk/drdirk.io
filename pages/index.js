@@ -9,11 +9,11 @@ import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 export default () => {
   return (
     <Layout>
-      <Header>
+      <Header>className="dark"
         <Description>
           <h1>I am Dr. Dirk Hornung,</h1>
           <p>a recently graduated theoretical physics PhD. I am an entrepreneur, full stack developer, blockchain architect and creator. I have a passion for discovering new things. Lately I am studying Deep Learning and build IOT devices.</p>
-          <LinkButton href="/timeline"><a className="dark">Discover me</a></LinkButton>
+          <Link href="/timeline"><StyledA className="dark">Discover me</StyledA></Link>
         </Description>
         <Video
           src="https://www.youtube.com/embed/Om1DGAa7Cgw?autoplay=1&mute=1&rel=0"
@@ -71,7 +71,7 @@ const Video = styled.iframe`
   box-shadow: rgba(255, 255, 255, 0.18) 0px 4px 6px 0px;
 `
 
-const LinkButton = styled(Link)`
+const StyledA = styled.a`
   display: inline-block;
   font-family: FontRegular;
   font-weight: 600;

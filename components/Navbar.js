@@ -36,7 +36,7 @@ const Navbar = () => {
           <Link href="/timeline"><a className="dark">Timeline</a></Link>
         </li>
         <li>
-    <img src="../static/images/logo.png" style={{height: '80%', verticalAlign: 'middle'}} />
+          <img src="../static/images/logo.png" style={{height: '80%', verticalAlign: 'middle'}} />
         </li>
         <li>
           <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
