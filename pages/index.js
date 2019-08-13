@@ -6,7 +6,6 @@ import Card from '../components/Card'
 import { faRocket, faLayerGroup, faAtom, faScrewdriver, faRobot} from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
-
 export default () => {
   return (
     <Layout>
@@ -27,7 +26,7 @@ export default () => {
         <Card title="Entrepreneur" subtitle="Founding companies since 14." icon={faRocket} full gradient={3}  />
         <Card title="Full Stack Developer" subtitle="Need an App?" icon={faLayerGroup} />
         <Card title="Blockchain Developer" subtitle="Ethereum and Smart Contracts!" icon={faEthereum} />
-        <Card title="PhD in Theoretical Physics" subtitle="Strong analytic thinking." icon={faAtom}
+        <Card title="PhD in Theoretical Physics" subtitle="Strong analytical skills." icon={faAtom}
           full gradient={2} />
         <Card title="Prototyping" subtitle="I love building things!" icon={faScrewdriver} />
         <Card title="Artificial Intelligence" subtitle="Machines > Humans." icon={faRobot} />
