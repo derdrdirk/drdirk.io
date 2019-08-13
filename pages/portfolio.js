@@ -30,6 +30,12 @@ export default () => {
   const [selectedCompany, setSelectedCompany] = useState(null)
   const [selectedTags, setSelectedTags] = useState(null)
 
+  function resetSelections() {
+    setSelectedTitle(null)
+    setSelectedCompany(null)
+    setSelectedTags(null)
+  }
+
   // const toggleFullScreen = (title) => {
   //   setData(data.map(item => {
   //     if(item.title !== title) return {...item, fullscreen: false}
@@ -45,7 +51,12 @@ export default () => {
           <Select
             placeholder="Select Title..."
             value={selectedTitle}
-            onChange={(selectedOption) => {dispatch(title(selectedOption.value)); setSelectedTitle(selectedOption)}}
+            onChange={
+              (selectedOption) => {
+                resetSelections()
+                dispatch(title(selectedOption.value))
+                setSelectedTitle(selectedOption)}
+            }
             options={[...titleNames].map(t => ({value: t, label: t}))}
           />
         </Selector>
@@ -54,7 +65,11 @@ export default () => {
           <Select
             placeholder="Select Company..."
             value={selectedCompany}
-            onChange={(selectedOption) => {dispatch(company(selectedOption.value)); setSelectedCompany(selectedOption)}}
+            onChange={(selectedOption) => {
+              resetSelections()
+              dispatch(company(selectedOption.value))
+              setSelectedCompany(selectedOption)
+            }}
             options={[...companyNames].map(c => ({value: c, label: c}))}
           />
         </Selector>
@@ -70,6 +85,7 @@ export default () => {
                 } else {
                   dispatch(reset)
                 }
+                resetSelections()
                 setSelectedTags(selectedOptions)
               }
             }
@@ -80,9 +96,6 @@ export default () => {
         <Selector>
           <Button onClick={() => dispatch(reset)}>Reset Filter</Button>
         </Selector>
-        {/* <Filter filterProp="onlyProfessional" title="Professional"/> */}
-        {/* <Filter filterProp="onlyAcademic" title="Academic"/> */}
-        {/* {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)} */}
       </Controls>
       <Flipper flipKey={JSON.stringify(portfolio)}>
         <List>
