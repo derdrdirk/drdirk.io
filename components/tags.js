@@ -1,4 +1,5 @@
 export const tagColors = {
+  '...': 'white',
   'Ant-Design': '#2E86C1',
   'AWS Amplify': '#F1C40F',
   'AWS Cognito': '#EB984E',

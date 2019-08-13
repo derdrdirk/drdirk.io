@@ -5,22 +5,30 @@ import FullScreenModal from '../components/FullScreenModal'
 import styled from 'styled-components'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import Select from 'react-select'
+import portfolio from '../components/portfolioList'
+import { company, tag, title, reset } from '../redux/actions'
 
-
-// for(const item of portfolio) {
-//   item.fullscreen = false
-// }
-
-
-// const tags = new Set()
-// portfolio.forEach(obj => obj.tags.forEach(tag => tags.add(tag)))
-
+let titleNames = new Set()
+let companyNames = new Set()
+let tagNames = new Set()
+for(const entry of portfolio) {
+  titleNames.add(entry.title)
+  if('company' in entry) companyNames.add(entry.company)
+  if('tags' in entry) {
+    for(const tag of entry.tags) {
+      tagNames.add(tag)
+    }
+  }
+}
 
 export default () => {
-  // const [filter, setFilter] = useState({})
-  // const [data, setData] = useState(portfolio)
   const portfolio = useSelector(state => state.portfolio)
+  const dispatch = useDispatch()
+  const [selectedTitle, setSelectedTitle] = useState(null)
+  const [selectedCompany, setSelectedCompany] = useState(null)
+  const [selectedTags, setSelectedTags] = useState(null)
 
   // const toggleFullScreen = (title) => {
   //   setData(data.map(item => {
@@ -29,34 +37,49 @@ export default () => {
   //   }))
   // }
 
-  // const filteredData = data.filter(
-  //   ( data ) => {
-  //     if(filter.onlyProfessional && !data.isProfessional)
-  //       return false
-
-  //     if(filter.onlyAcademic && data.isProfessional)
-  //       return false
-
-  //     for(const tag of tags) {
-  //       if(filter[tag] && !data.tags.includes(tag))
-  //         return false
-  //     }
-
-  //     return true
-  // })
-
-  // const Filter = ({ filterProp, title }) => (
-  //   <Button
-  //     active={filter[filterProp]}
-  //     onClick={() => setFilter({...filter, [filterProp]: !filter[filterProp]})}
-  //   >
-  //     {title}
-  //   </Button>
-  // )
-
   return (
     <Layout>
       <Controls>
+        <Selector>
+          <p>Filter by Title:</p>
+          <Select
+            placeholder="Select Title..."
+            value={selectedTitle}
+            onChange={(selectedOption) => {dispatch(title(selectedOption.value)); setSelectedTitle(selectedOption)}}
+            options={[...titleNames].map(t => ({value: t, label: t}))}
+          />
+        </Selector>
+        <Selector>
+          <p>Filter by Company:</p>
+          <Select
+            placeholder="Select Company..."
+            value={selectedCompany}
+            onChange={(selectedOption) => {dispatch(company(selectedOption.value)); setSelectedCompany(selectedOption)}}
+            options={[...companyNames].map(c => ({value: c, label: c}))}
+          />
+        </Selector>
+        <Selector>
+          <p>Filter by Tags:</p>
+          <Select
+            placeholder="Select Tags..."
+            value={selectedTags}
+            onChange={
+              (selectedOptions) => {
+                if(selectedOptions) {
+                  dispatch(tag(selectedOptions.map(o => o.value)))
+                } else {
+                  dispatch(reset)
+                }
+                setSelectedTags(selectedOptions)
+              }
+            }
+            options={[...tagNames].map(t => ({value: t, label: t}))}
+            isMulti
+          />
+        </Selector>
+        <Selector>
+          <Button onClick={() => dispatch(reset)}>Reset Filter</Button>
+        </Selector>
         {/* <Filter filterProp="onlyProfessional" title="Professional"/> */}
         {/* <Filter filterProp="onlyAcademic" title="Academic"/> */}
         {/* {[...tags].map(tag => <Filter key={tag} filterProp={tag} title={tag} />)} */}
@@ -78,7 +101,7 @@ export default () => {
               delete rest.subtitle
               return (
                 <Flipped key={title} flipId={title}>
-                  <ListElement onClick={() => toggleFullScreen(title)}>
+                  <ListElement /* onClick={() => toggleFullScreen(title)} */>
                     <Card title={title} {...rest}/>
                   </ListElement>
                 </Flipped>
@@ -93,28 +116,31 @@ export default () => {
 
 const Controls = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: flex-end;
   position: relative;
   top: 50px;
-  width: 90vw;
+  width: 50vw;
   margin: auto;
   flex-wrap: wrap;
 `
-const Button = styled.button`
-  border: 0;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 6px 0px;
-  padding: 10px;
-  font-family: FontRegular;
-  font-weight: 400;
-  font-size: 16px;
-  background-color: ${props => props.active ? 'green' : 'white'};
-  margin: 7px;
-  cursor: pointer;
-  &:hover {
-    background-color: yellow;
-  }
+const Selector = styled.div`
+  flex-grow: 1;
+  margin-right: 20px;
 `
+const Button = styled.button`
+  border-color: hsl(0,0%,80%);
+  color: ${props => props.theme.colors.primary};
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: ${props => props.theme.colors.primaryHover}
+  }
+ `
 const List = styled.ul`
   padding-top: 100px;
   margin: auto;
@@ -122,8 +148,6 @@ const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  // grid-template-columns: 30% 30% 30%;
-  // grid-column-gap: 16px;
 `
 const ListElement = styled.li`
   display: flex;

@@ -12,6 +12,7 @@ import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux'
 import { increment, company } from '../redux/actions'
 import { tagColors } from '../components/tags'
+import Slider from 'react-slick'
 
 const Card = (props) => {
   const dispatch = useDispatch()
@@ -25,9 +26,9 @@ const Card = (props) => {
 	      </linearGradient>
       </svg>
     {props.tags && (
-      <Tags>
-        {props.tags.map(tag => <Tag tag={tag}>{tag}</Tag>)}
-      </Tags>
+      <TagSlider infinite={false} slidesToShow={4} variableWidth={true} swipeToSlide={true} speed={500}>
+        {props.tags.map(tag => <Tag tag={tag} key={tag}>{tag}</Tag>)}
+      </TagSlider>
     )}
       {props.header && <h4>{props.header}</h4>}
       {props.icon && <StyledIcon icon={props.icon} /> }
@@ -148,10 +149,10 @@ const PortfolioA = styled.a`
   bottom: 40px;
   cursor: pointer;
 `
-const Tags = styled.ul`
+const TagSlider = styled(Slider)`
   margin-bottom: 16px;
 `
-const Tag = styled.li`
+const Tag = styled.div`
   background-color: ${({tag}) => tag in tagColors ? tagColors[tag] : 'black' };
   color: white;
   padding: 5px;
@@ -159,6 +160,7 @@ const Tag = styled.li`
   margin: 3px;
   border-radius: 6px;
   font-size: 0.9rem;
+  width: auto !important;
 `
 
 export default Card
