@@ -23,9 +23,11 @@ for(const entry of portfolio) {
   }
 }
 
+
 export default () => {
   const portfolio = useSelector(state => state.portfolio)
   const dispatch = useDispatch()
+  const [fullscreenTitle, setFullscreenTitle] = useState(null)
   const [selectedTitle, setSelectedTitle] = useState(null)
   const [selectedCompany, setSelectedCompany] = useState(null)
   const [selectedTags, setSelectedTags] = useState(null)
@@ -35,13 +37,6 @@ export default () => {
     setSelectedCompany(null)
     setSelectedTags(null)
   }
-
-  // const toggleFullScreen = (title) => {
-  //   setData(data.map(item => {
-  //     if(item.title !== title) return {...item, fullscreen: false}
-  //     return {...item, fullscreen: !item.fullscreen}
-  //   }))
-  // }
 
   return (
     <Layout>
@@ -99,13 +94,13 @@ export default () => {
       </Controls>
       <Flipper flipKey={JSON.stringify(portfolio)}>
         <List>
-          {portfolio.map(({ title, fullscreen, ...rest }) => {
-            if(fullscreen) {
+          {portfolio.map(({ title,  ...rest }) => {
+            if(title === fullscreenTitle) {
               return (
                 <Flipped key={title} flipId={title}>
                   <FullScreenModal
                     title={title}
-                    close={() => toggleFullScreen(title)}
+                    close={() => setFullscreenTitle(null)}
                     {...rest}
                   />
                 </Flipped>
@@ -114,7 +109,7 @@ export default () => {
               delete rest.subtitle
               return (
                 <Flipped key={title} flipId={title}>
-                  <ListElement /* onClick={() => toggleFullScreen(title)} */>
+                  <ListElement onClick={() => setFullscreenTitle(title)}>
                     <Card title={title} {...rest}/>
                   </ListElement>
                 </Flipped>
