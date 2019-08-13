@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faLinkedin, faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default () => (
@@ -11,6 +12,7 @@ export default () => (
       <a href="https://www.instagram.com/dirk.hornung/" target="_blank"><Icon icon={faInstagram}/></a>
       <a href="https://www.facebook.com/dirk.hornung91" target="_blank"><Icon icon={faFacebook}/></a>
       <a href="https://www.github.com/knowledge91" target="_blank"><Icon icon={faTwitter}/></a>
+      <a href="mailto:hello@drdirk.io" target="_blank"><Icon icon={faEnvelope}/></a>
     </Centered>
   </Container>
 )

@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
         </li>
         <li>
-          <Link href="/portfolio"><a className="dark">Contact</a></Link>
+          <a className="dark" href="mailto:hello@drdirk.io">hello@drdirk.io</a>
         </li>
       </StyledUl>
     </NavigationContainer>
