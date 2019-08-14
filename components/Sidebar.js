@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {Fragment, useState} from 'react'
 import styled from 'styled-components'
 import {useSpring, animated} from 'react-spring'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,16 +13,18 @@ export default ({ children, isOpen, close }) => {
   })
 
   return (
-    <Sidebar isOpen={isOpen}>
+    <Fragment>
       <Overlay style={overlayStyle} />
-      <Panel style={panelStyle}>
-        <Close icon={faTimes} onClick={close} />
-        <Logo src="../static/images/logo.png" />
-        <LinkList>
-          { children }
-        </LinkList>
-      </Panel>
-    </Sidebar>
+      <Sidebar>
+        <Panel style={panelStyle}>
+          <Close icon={faTimes} onClick={close} />
+          <Logo src="../static/images/logo.png" />
+          <LinkList>
+            { children }
+          </LinkList>
+        </Panel>
+      </Sidebar>
+    </Fragment>
   )
 }
 
@@ -47,9 +49,6 @@ const Sidebar = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  display: ${(props) => props.isOpen ? 'block' : 'none'};
 `
 const Panel = styled(animated.div)`
   position: absolute;
