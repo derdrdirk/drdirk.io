@@ -124,17 +124,33 @@ export default () => {
 
 const Controls = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
   position: relative;
   top: 50px;
   width: 50vw;
   margin: auto;
   flex-wrap: wrap;
+  width: 90vw;
+
+  @media (min-width: 767px) {
+    width: 80vw;
+    justify-content: center;
+  }
 `
 const Selector = styled.div`
-  flex-grow: 1;
-  margin-right: 20px;
+  width: 48%;
+  text-align: center;
+
+  @media (min-width: 767px) {
+    margin-right: 10px;
+    flex: 1;
+    width: auto;
+
+    > p {
+      text-align: left;
+    }
+  }
 `
 const Button = styled.button`
   border-color: hsl(0,0%,80%);
@@ -159,7 +175,11 @@ const List = styled.ul`
 `
 const ListElement = styled.li`
   display: flex;
-  width: 32.5%;
+  width: 90%;
   margin: 0 0 16px 0;
   cursor: pointer;
+
+  @media (min-width: 767px) {
+    width: 32.5%;
+  }
 `
