@@ -7,6 +7,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 export default ({ children, isOpen, close }) => {
   const overlayStyle = useSpring({
     opacity: isOpen ? 1 : 0,
+    display: isOpen ? 'block' : 'none',
   })
   const panelStyle =useSpring({
     transform: isOpen ? 'translate3d(0px,0,0)' : 'translate3d(-255px, 0, 0)',

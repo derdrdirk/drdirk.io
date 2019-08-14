@@ -114,14 +114,20 @@ const Header = styled.section`
 const Control = styled.div`
   display: flex;
   justify-content: center;
-  width: 70vw;
-  height: 60px;
+  width: 90vw;
+  height: 40px;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 1;
   position: absolute;
-  top: -30px;
+  top: -20px;
+
+  @media (min-width: 767px) {
+    height: 60px;
+    top: -30px;
+    width: 70vw;
+  }
 `
 const CtrlButton = styled.button`
   width: 33.33%;
@@ -131,7 +137,7 @@ const CtrlButton = styled.button`
     return '0'
   }};
   color: rgb(45, 64, 81);
-  font-size: 18px;
+  font-size: 1rem;
   text-align: center;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.024) 0px 4px 6px;
@@ -143,19 +149,30 @@ const CtrlButton = styled.button`
   &:focus {
     outline: none;
   }
+
+  @media (min-width: 767px) {
+    height: 60px;
+    top: -30px;
+  }
 `
 const TimelineContainer = styled.div`
   background-color: rgb(249, 250, 252);
   width: 100vw;
-  padding: 70px;
+  padding: 40px 15px;
   position: relative;
+  box-sizing: border-box;
+
+  @media (min-width: 767px) {
+    padding: 70px;
+  }
 `
 const Timeline = styled.div`
   position: relative;
   width: 100%;
   max-width: 1100px;
-  padding-left: 70px;
+  padding-left: 40px;
   margin: auto;
+  box-sizing: border-box;
   &:before {
     content: '';
     position: absolute;
@@ -165,6 +182,10 @@ const Timeline = styled.div`
     width: 4px;
     background: #d8d8d8;
   }
+
+  @media (min-width: 767px) {
+    padding-left: 70px;
+  }
 `
 const Entry = styled.div`
   position: relative;
@@ -173,12 +194,12 @@ const EntryPoint = styled.div`
   line-height: ${circleSize}px;
   &::before{
     content: "";
-    width: 80px;
-    height: 80px;
+    width: 20px;
+    height: 20px;
     opacity: 0.18;
     position: absolute;
-    left: -99px;
-    top: -13px;
+    left: -29px;
+    top: 2px;
     border-radius: 40px;
     background: linear-gradient(44.28deg, rgb(0, 219, 226) 0%, rgb(1, 191, 227) 101.29%);
   }
@@ -187,13 +208,36 @@ const EntryPoint = styled.div`
     position: absolute;
     display: inline;
     color: white;
-    width: ${circleSize}px;
+    width: ${circleSize*0.7}px;
     text-align: center;
-    line-height: ${circleSize}px;
-    height: ${circleSize}px;
+    line-height: ${circleSize*0.7}px;
+    height: ${circleSize*0.7}px;
     top: 0px;
-    left: -86px;
-    border-radius: ${circleSize/2}px;
+    left: -48px;
+    border-radius: ${circleSize*0.7/2}px;
     background: linear-gradient(44.28deg, rgb(0, 219, 226) 0%, rgb(1, 191, 227) 101.29%);
+  }
+
+  @media (min-width: 767px) {
+    &::before{
+      width: 80px;
+      height: 80px;
+      left: -99px;
+      top: -13px;
+    }
+    &::after{
+      content: "${(props) => props.year}";
+      position: absolute;
+      display: inline;
+      color: white;
+      width: ${circleSize}px;
+      text-align: center;
+      line-height: ${circleSize}px;
+      height: ${circleSize}px;
+      top: 0px;
+      left: -86px;
+      border-radius: ${circleSize/2}px;
+      background: linear-gradient(44.28deg, rgb(0, 219, 226) 0%, rgb(1, 191, 227) 101.29%);
+    }
   }
 `

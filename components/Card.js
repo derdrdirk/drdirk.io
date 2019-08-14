@@ -153,18 +153,32 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 const Attachements = styled.div`
   position: absolute;
-  bottom: 40px;
-  right: 30px;
+  bottom: 15px;
+  right: 20px;
   > a {
     color: ${props => props.theme.colors.primary};
-    font-size: 2rem;
-    margin-right: 20px;
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+
+  @media (min-width: 767px) {
+    bottom: 40px;
+    right: 30px;
+
+    > a {
+      font-size: 2rem;
+      margin-left: 20px;
+    }
   }
 `
 const PortfolioA = styled.a`
   position: absolute;
-  bottom: 40px;
+  bottom: 15px;
   cursor: pointer;
+
+  @media (min-width: 767px) {
+    bottom: 40px;
+  }
 `
 const TagSlider = styled(Slider)`
   margin-bottom: 16px;
