@@ -9,7 +9,7 @@ import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 export default () => {
   return (
     <Layout>
-      <Header>className="dark"
+      <Header>
         <Description>
           <h1>I am Dr. Dirk Hornung,</h1>
           <p>a recently graduated theoretical physics PhD. I am an entrepreneur, full stack developer, blockchain architect and creator. I have a passion for discovering new things. Lately I am studying Deep Learning and build IOT devices.</p>
@@ -23,52 +23,70 @@ export default () => {
         ></Video>
       </Header>
       <Content>
-        <Card title="Entrepreneur" subtitle="Founding companies since 14." icon={faRocket} full gradient={3}  />
-        <Card title="Full Stack Developer" subtitle="Need an App?" icon={faLayerGroup} />
-        <Card title="Blockchain Developer" subtitle="Ethereum and Smart Contracts!" icon={faEthereum} />
-        <Card title="PhD in Theoretical Physics" subtitle="Strong analytical skills." icon={faAtom}
-          full gradient={2} />
-        <Card title="Prototyping" subtitle="I love building things!" icon={faScrewdriver} />
-        <Card title="Artificial Intelligence" subtitle="Machines > Humans." icon={faRobot} />
+        <Card title="Entrepreneur" subtitle="Founding companies since 14." icon={faRocket} gradient={3}  />
+        <Card title="Full Stack Developer" subtitle="Need an App?" icon={faLayerGroup} firstHalf/>
+        <Card title="Blockchain Developer" subtitle="Ethereum and Smart Contracts!" icon={faEthereum} secondHalf />
+        <Card title="PhD in Theoretical Physics" subtitle="Strong analytical skills." icon={faAtom} gradient={2} />
+        <Card title="Prototyping" subtitle="I love building things!" icon={faScrewdriver} firstHalf />
+        <Card title="Artificial Intelligence" subtitle="Machines > Humans." icon={faRobot} secondHalf />
       </Content>
     </Layout>
   )
 }
 
 const Header = styled.section`
-  height: 100vh;
   background-color: #1c1d23;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: 30px;
+
+  @media (min-width: 767px) {
+    padding: 0;
+    height: 100vh;
+  }
 `
 const Content = styled.section`
   width: 95%;
   max-width: 1100px;
-  margin: 50px auto 50px auto;
+  margin: 20px auto 20px auto;
   display: grid;
   grid-template-columns: calc(50% - 15px) calc(50% - 15px);
   justify-content: center;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-row-gap: 18px;
+
+  @media (min-width: 767px) {
+    margin: 50px auto 50px auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+  }
 `
 
 const Description = styled.div`
   font-family: FontLight;
   margin: 50px;
-  width: 25vw;
+  width: 95vw;
 
   > p {
     font-size: 1.2rem;
   }
+
+  @media (min-width: 767px) {
+    width: 25vw;
+  }
 `
 const Video = styled.iframe`
-  width: 55vw;
-  height: calc(55vw/560 * 315);
+  width: 90vw;
+  height: calc(90vw/560 * 315);
   border: none;
   box-shadow: rgba(255, 255, 255, 0.18) 0px 4px 6px 0px;
+
+  @media (min-width: 767px) {
+    width: 55vw;
+    height: calc(55vw/560 * 315);
+  }
 `
 
 const StyledA = styled.a`

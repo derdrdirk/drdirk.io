@@ -76,12 +76,21 @@ const addLineBreaks = string =>
 
 
 const StyledGrid = styled.div`
-  ${(props) => props.full && `
-    grid-column-start: 1;
-    grid-column-end: 3;
-  `}
   height: 100%;
   width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  @media (min-width: 767px) {
+    ${(props) => props.firstHalf && `
+      grid-column-start: 1;
+      grid-column-end: 2;
+    `}
+    ${(props) => props.secondHalf && `
+      grid-column-start: 2;
+      grid-column-end: 3;
+    `}
+  }
 `
 const StyledCard = withReveal(styled.div`
   position: relative;
@@ -91,7 +100,7 @@ const StyledCard = withReveal(styled.div`
   algin-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 40px 40px 100px 40px;
+  padding: 20px 20px 50px 20px;
   margin-bottom: 20px;
   text-align: ${(props) => props.textAlign ? props.textAlign : 'center'};
   border-radius: 12px;block
@@ -124,13 +133,21 @@ const StyledCard = withReveal(styled.div`
     font-family: FontLight;
     font-size: 1.2rem;
   }
+
+  @media (min-width: 767px) {
+    padding: 40px 40px 100px 40px;
+  }
  `, <Fade />)
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: 100px;
-  margin: 0 auto 0 auto;
+  font-size: 4rem;
+  margin: 0 auto 16px auto;
   path {
     fill: url(#lgrad);
+  }
+
+  @media (min-width: 767px) {
+    font-size: 100px;
   }
 `
 
