@@ -18,7 +18,7 @@ export default () => (
 )
 
 const Container = styled.section`
-  padding: 30px 15px;
+  padding: 30px 0px;
   width: 100vw;
   background-color: rgb(249, 250, 252);
 `
