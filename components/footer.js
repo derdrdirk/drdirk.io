@@ -23,12 +23,16 @@ const Container = styled.section`
   background-color: rgb(249, 250, 252);
 `
 const Centered = styled.div`
-  width: 50%;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-size: 1.5rem;
+
+  @media (min-width: 767px) {
+    width: 50%;
+  }
 `
 const Icon = styled(FontAwesomeIcon)`
   line-height: 1.5rem;
