@@ -1,13 +1,16 @@
-import React, {useState, useCallback} from 'react'
+import React, {Fragment, useState, useCallback} from 'react'
 import {useSpring, animated} from 'react-spring'
 import styled from 'styled-components'
 import Link from 'next/link'
 import useEventListener from './useEventListener'
-import ResponsiveLayout from './ResponsiveLayout'
+import Sidebar from './Sidebar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   const [scrollPos, setScrollPos] = useState({y: window.scrollY})
   const [width, setWidth] = useState(window.innerWidth)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleScroll = useCallback(
     () => {
@@ -32,32 +35,53 @@ const Navbar = () => {
     backgroundColor: (isScrolled) ? 'rgba(28, 29, 35, 0.8)' : 'rgba(28, 29, 35, 1)'
   })
 
-  if(width > 767) {
-    return (
-     <NavigationContainer style={props}>
-       <StyledUl>
-         <li>
-           <Link href="/"><a className="dark">Home</a></Link>
-         </li>
-         <li>
-           <Link href="/timeline"><a className="dark">Timeline</a></Link>
-         </li>
-         <li>
-           <img src="../static/images/logo.png" style={{height: '80%', verticalAlign: 'middle'}} />
-         </li>
-         <li>
-           <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
-         </li>
-         <li>
-           <a className="dark" href="mailto:hello@drdirk.io">hello@drdirk.io</a>
-         </li>
-       </StyledUl>
-     </NavigationContainer>
-    )
-  } else {
-    return (<MobileNavigationContainer>yolo</MobileNavigationContainer>)
-  }
-
+  return (
+    <Fragment>
+      {width > 767 ? (
+        <NavigationContainer style={props}>
+          <StyledUl>
+            <li>
+              <Link href="/"><a className="dark">Home</a></Link>
+            </li>
+            <li>
+              <Link href="/timeline"><a className="dark">Timeline</a></Link>
+            </li>
+            <li>
+              <img src="../static/images/logo.png" style={{height: '80%', verticalAlign: 'middle'}} />
+            </li>
+            <li>
+              <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
+            </li>
+            <li>
+              <a className="dark" href="mailto:hello@drdirk.io">hello@drdirk.io</a>
+            </li>
+          </StyledUl>
+        </NavigationContainer>
+      ) : (
+        <Fragment>
+          <MobileNavigationContainer style={props}>
+            <Icon icon={faBars} onClick={() => setIsOpen(true)}/>
+            <img src="../static/images/logo.png" style={{height: '80%', verticalAlign: 'middle'}} />
+            <div></div>
+          </MobileNavigationContainer>
+          <Sidebar isOpen={isOpen} close={() => setIsOpen(false)}>
+            <li>
+              <Link href="/"><a className="dark">Home</a></Link>
+            </li>
+            <li>
+              <Link href="/timeline"><a className="dark">Timeline</a></Link>
+            </li>
+            <li>
+              <Link href="/portfolio"><a className="dark">Portfolio</a></Link>
+            </li>
+            <li>
+              <a className="dark" href="mailto:hello@drdirk.io">hello@drdirk.io</a>
+            </li>
+          </Sidebar>
+        </Fragment>
+      )}
+    </Fragment>
+  )
 }
 
 export default Navbar
@@ -86,5 +110,17 @@ const StyledUl = styled(animated.div)`
   }
 `
 
-const MobileNavigationContainer = styled.div`
+const MobileNavigationContainer = styled(animated.div)`
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 1;
+`
+const Icon = styled(FontAwesomeIcon)`
+  padding: 5px;
+  color: white;
+  font-size: 20px;
 `
