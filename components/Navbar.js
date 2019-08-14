@@ -36,7 +36,7 @@ const Navbar = () => {
   })
 
   return (
-    <Fragment>
+    <div style={{position: 'relative', zIndex: 5}}>
       {width > 767 ? (
         <NavigationContainer style={props}>
           <StyledUl>
@@ -80,7 +80,7 @@ const Navbar = () => {
           </Sidebar>
         </Fragment>
       )}
-    </Fragment>
+    </div>
   )
 }
 

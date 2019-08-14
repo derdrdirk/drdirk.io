@@ -37,12 +37,14 @@ const Close = styled(FontAwesomeIcon)`
 `
 
 const Overlay = styled(animated.div)`
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
+  left: 50px;
   right: 0;
   bottom: 0;
   background: rgba(68, 81, 89, 0.65);
+  height: 100vh;
+  z-index: 1;
 `
 const Sidebar = styled.div`
   z-index: 1;
