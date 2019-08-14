@@ -3,7 +3,6 @@ import React, {useEffect, useRef} from 'react'
 function useEventListener(eventName, handler, element) {
   const savedHandler = useRef();
 
-
   useEffect(() => {
     savedHandler.current = handler
   }, [handler])
