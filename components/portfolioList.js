@@ -165,7 +165,7 @@ export default [{
 }, {
   header: 'Founder',
   subtitle: 'Selling Wordpress pages and WooCommerce shops. Gathering experience with HTML, CSS, PHP, JavaScript and MySQL as well as Laravel and JQuery.',
-  title: 'Hornung Webdesign e.K.',
+  title: 'Hornung Webdesign e.U.',
   timeline: 'professional',
   year: 2009,
   webs: ['http://www.hornung-webdesign.de'],
