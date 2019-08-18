@@ -10,17 +10,6 @@ export default () => {
   const [curriculum, setCurriculum] = useState('professional')
   const chooseCurriculum = (curriculum) => () => setCurriculum(curriculum)
 
-  // let timeline
-  // switch(curriculum) {
-  // case 'academic':
-  //   timeline = <Academic />
-  //   break
-  // case 'professional':
-  //   timeline = <Professional />
-  //   break
-  // default: timeline = <Interests />;
-  // }
-
   const list = filterSortPortfolio(curriculum)
 
   return (
@@ -56,14 +45,14 @@ const filterSortPortfolio = (type) => {
   return portfolio
     .filter(entry => entry.timeline && entry.timeline === type)
     .sort((a, b) => {
-      if (a.date < b.date) {
+      if (a.year < b.year) {
         return -1;
       }
-      if (a.date > b.date) {
+      if (a.year > b.year) {
         return 1;
       }
       return 0;
-    })
+    }).reverse()
 }
 
 const Interests = () => (
