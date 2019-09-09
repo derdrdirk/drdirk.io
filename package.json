@@ -24,7 +24,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+      "start": "next start",
+      "deploy": "now deploy --target production"
   },
   "devDependencies": {
     "@zeit/next-css": "^1.0.1",

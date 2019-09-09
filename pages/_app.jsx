@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
-import App, { Container } from 'next/app';
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import withRedux from 'next-redux-wrapper'
-import { initStore } from '../redux'
-import { Provider } from 'react-redux'
+import React, { Fragment } from "react";
+import App, { Container } from "next/app";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+import withRedux from "next-redux-wrapper";
+import { initStore } from "../redux";
+import { Provider } from "react-redux";
+import Head from "next/head";
 
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -49,14 +50,14 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
-`
+`;
 
 const theme = {
   colors: {
-    primary: '#0070f3',
-    primaryHover: '#65d2e9'
+    primary: "#0070f3",
+    primaryHover: "#65d2e9"
   }
-}
+};
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -76,6 +77,9 @@ class MyApp extends App {
       <Fragment>
         <GlobalStyle />
         <Container>
+          <Head>
+            <title>Dr. Dirk Hornung</title>
+          </Head>
           <Provider store={store}>
             <ThemeProvider theme={theme}>
               <Component {...pageProps} />
