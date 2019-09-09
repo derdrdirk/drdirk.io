@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
 import styled from 'styled-components'
-import portfolio from '../components/portfolioList.js'
+import portfolio from '../components/portfolioList.json'
 
 const circleSize = 55
 

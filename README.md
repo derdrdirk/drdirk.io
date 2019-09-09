@@ -1,6 +1,6 @@
-# ToDo
-- Setup NextJS
-- Design home page (Following Aragon design)
+# Deploy
+Execute `yarn deploy (now deploy --target production)` in root folder.
+
 
 ## Structure
 - Home
