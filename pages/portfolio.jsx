@@ -10,6 +10,7 @@ import Select from "react-select";
 import portfolio from "../components/portfolioList.json";
 import { company, tag, title, reset } from "../redux/actions";
 
+
 let titleNames = new Set();
 let companyNames = new Set();
 let tagNames = new Set();

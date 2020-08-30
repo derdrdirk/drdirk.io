@@ -178,6 +178,7 @@ const Timeline = styled.div`
 `
 const Entry = styled.div`
   position: relative;
+  margin-bottom: 20px;
 `
 const EntryPoint = styled.div`
   line-height: ${circleSize}px;
